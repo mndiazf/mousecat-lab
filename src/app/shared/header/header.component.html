@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header-bg">
+    <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
+    <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
+    <nav class="header-nav" [class.open]="menuOpen">
+        <a href="#" class="header-link">Servicios <span class="arrow">&#9662;</span></a>
+        <a href="#" class="header-link">Industrias</a>
+        <a href="#" class="header-link">Tecnologías</a>
+        <a href="#" class="header-link">Empresa <span class="arrow">&#9662;</span></a>
+        <a href="#" class="header-link">Blog</a>
+        <a href="#" class="header-btn">Cotizar Proyecto</a>
+    </nav>
+    <button class="menu-toggle" (click)="menuOpen = !menuOpen" aria-label="Abrir menú">
+      <span [class.bar1]="!menuOpen" [class.x1]="menuOpen"></span>
+      <span [class.bar2]="!menuOpen" [class.x2]="menuOpen"></span>
+      <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
+    </button>
+  </div>
+</header>
