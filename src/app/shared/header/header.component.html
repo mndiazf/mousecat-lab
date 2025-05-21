@@ -1,4 +1,6 @@
-<!-- Franja superior con línea divisora -->
+<!-- header.component.html -->
+
+<!-- Topbar con redes y email -->
 <div class="header-topbar">
   <div class="header-topbar-content">
     <div class="header-topbar-left">
@@ -9,6 +11,9 @@
       <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="header-topbar-icon">
         <img src="/linkedin.png" alt="LinkedIn" />
       </a>
+      <!-- <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="header-topbar-icon">
+        <img src="/facebook.png" width="20" height="20"  alt="Facebook" />
+      </a> -->
     </div>
     <div class="header-topbar-right">
       <span class="header-topbar-icon">
@@ -22,7 +27,8 @@
 
 <header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile}" [@headerTypeAnimation]>
   <div class="header-bg">
-    <!-- Sección superior: logo y botón menú -->
+
+    <!-- --- Sección superior móvil --- -->
     <div class="header-top" *ngIf="isMobile">
       <a routerLink="/" class="header-logo-link">
         <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
@@ -33,40 +39,175 @@
         <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
       </button>
     </div>
-    <!-- Sección superior escritorio -->
+
+    <!-- Línea divisora móvil -->
+    <div class="header-divider" *ngIf="isMobile"></div>
+
+    <nav class="mobile-nav"
+     *ngIf="isMobile"
+     [@mobileMenuAnimation]="menuOpen ? 'open' : 'closed'"
+     (@mobileMenuAnimation.done)="onMenuAnimationDone()"
+     [style.display]="(menuOpen || animating) ? 'flex' : 'none'">
+
+    <!-- Ítem con submenú “Servicios” -->
+    <div class="mobile-nav-item">
+      <button class="header-link" (click)="toggleSubMenu('servicios')">
+        Servicios
+        <span class="arrow" [class.open]="dropdowns['servicios']">&#9662;</span>
+      </button>
+
+      <!-- Usamos *ngIf para disparar enter/leave -->
+      <ul *ngIf="dropdowns['servicios']"
+          class="mobile-submenu"
+          @mobileSubmenuAnimation>
+        <li><strong>Desarrollo de Software</strong></li>
+        <li>
+          <a routerLink="/servicios/web"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Desarrollo Web
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicios/ecommerce"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            e-Commerce
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicios/sistemas"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Integración de Sistemas
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicios/custom"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Software a Medida
+          </a>
+        </li>
+        <li><strong>Aplicaciones Móviles</strong></li>
+        <li>
+          <a routerLink="/servicios/mobile"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Desarrollo Móvil
+          </a>
+        </li>
+        <li><strong>Soluciones Cloud</strong></li>
+        <li>
+          <a routerLink="/servicios/cloud"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Soluciones Cloud
+          </a>
+        </li>
+        <li><strong>Otros</strong></li>
+        <li>
+          <a routerLink="/servicios/consultoria"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Consultoría TI
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicios/support"
+            class="mobile-submenu-link"
+            (click)="toggleMenu()">
+            Soporte y Mantenimiento
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Resto de enlaces -->
+    <a routerLink="/industrias" class="header-link" (click)="toggleMenu()">Industrias</a>
+    <a routerLink="/tecnologias" class="header-link" (click)="toggleMenu()">Tecnologías</a>
+    <a routerLink="/empresa" class="header-link" (click)="toggleMenu()">Empresa</a>
+    <a routerLink="/blog" class="header-link" (click)="toggleMenu()">Blog</a>
+  </nav>
+
+  <!-- Botón cotizar móvil -->
+  <div class="header-bottom" *ngIf="isMobile">
+    <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
+  </div> 
+
+
+
+
+    <!-- --- Sección superior escritorio --- -->
     <div class="header-top" *ngIf="!isMobile">
       <a routerLink="/" class="header-logo-link">
         <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
       </a>
       <nav class="header-nav">
-        <a routerLink="/servicios" routerLinkActive="active" class="header-link">Servicios <span class="arrow">&#9662;</span></a>
+
+        <!-- Mega-menú SERVICIOS -->
+        <div class="nav-item has-dropdown"
+             (mouseenter)="openDropdown('servicios')"
+             (mouseleave)="closeDropdown('servicios')">
+          <a routerLink="/servicios" routerLinkActive="active" class="header-link">
+            Servicios <span class="arrow">&#9662;</span>
+          </a>
+          <div class="dropdown-menu" [class.open]="dropdowns['servicios']">
+            <ul class="cols">
+              <!-- Columna 1 -->
+              <li>
+                <h4>Desarrollo de Software</h4>
+                <ul>
+                  <li><a routerLink="/servicios/web">Desarrollo Web</a></li>
+                  <li><a routerLink="/servicios/ecommerce">eCommerce</a></li>
+                  <li><a routerLink="/servicios/sistemas">Integración de Sistemas</a></li>
+                  <li><a routerLink="/servicios/custom">Software a medida</a></li>
+                </ul>
+              </li>
+              <!-- Columna 2 -->
+              <li>
+                <h4>Aplicaciones Móviles</h4>
+                <ul>
+                  <li><a routerLink="/servicios/mobile">Desarrollo de Aplicaciones Móviles</a></li>
+                </ul>
+              </li>
+              <!-- Columna 3 -->
+              <li>
+                <h4>Soluciones Cloud</h4>
+                <ul>
+                  <li><a routerLink="/servicios/cloud/design">Diseño de Soluciones Cloud</a></li>
+                  <li><a routerLink="/servicios/cloud/deploy">Despliegue de Infraestructura</a></li>
+                  <li><a routerLink="/servicios/cloud/maint">Mantención y Soporte Cloud</a></li>
+                  <li><a routerLink="/servicios/cloud/asesoria">Asesoría en soluciones Cloud</a></li>
+                </ul>
+              </li>
+              <!-- Columna 4 -->
+              <li>
+                <h4>Otros Servicios</h4>
+                <ul>
+                  <li><a routerLink="/servicios/consultoria">Consultoría TI</a></li>
+                  <li><a routerLink="/servicios/support">Soporte y Mantenimiento de Software</a></li>
+                </ul>
+              </li>
+            </ul>   
+          </div>
+        </div>
+
+        <!-- Link normal -->
         <a routerLink="/industrias" routerLinkActive="active" class="header-link">Industrias</a>
+
+        <!-- Mega-menú EMPRESA -->
+        <div class="nav-item has-dropdown">
+          <a routerLink="/empresa" routerLinkActive="active" class="header-link">
+            Empresa
+          </a>
+        </div>
+
         <a routerLink="/tecnologias" routerLinkActive="active" class="header-link">Tecnologías</a>
-        <a routerLink="/empresa" routerLinkActive="active" class="header-link">Empresa <span class="arrow">&#9662;</span></a>
         <a routerLink="/blog" routerLinkActive="active" class="header-link">Blog</a>
         <a routerLink="/cotizar" class="header-btn">Cotizar Proyecto</a>
       </nav>
     </div>
 
-    <!-- Línea divisora solo en móvil -->
-    <div class="header-divider" *ngIf="isMobile"></div>
-
-    <!-- Menú móvil desplegable entre la parte superior y la inferior -->
-    <nav class="mobile-nav"
-         *ngIf="isMobile"
-         [@mobileMenuAnimation]="menuOpen ? 'open' : 'closed'"
-         (@mobileMenuAnimation.done)="onMenuAnimationDone()"
-         [style.display]="isMobile && (menuOpen || animating) ? 'flex' : 'none'">
-      <a routerLink="/servicios" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Servicios <span class="arrow">&#9662;</span></a>
-      <a routerLink="/industrias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
-      <a routerLink="/tecnologias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
-      <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Empresa <span class="arrow">&#9662;</span></a>
-      <a routerLink="/blog" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Blog</a>
-    </nav>
-
-    <!-- Sección inferior solo móvil -->
-    <div class="header-bottom" *ngIf="isMobile">
-      <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
-    </div>
   </div>
 </header>
