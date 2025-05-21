@@ -1,19 +1,72 @@
-<header class="header">
+<!-- Franja superior con línea divisora -->
+<div class="header-topbar">
+  <div class="header-topbar-content">
+    <div class="header-topbar-left">
+      <span class="header-topbar-label">Síguenos:</span>
+      <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="header-topbar-icon">
+        <img src="/ig.png" alt="Instagram" />
+      </a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="header-topbar-icon">
+        <img src="/linkedin.png" alt="LinkedIn" />
+      </a>
+    </div>
+    <div class="header-topbar-right">
+      <span class="header-topbar-icon">
+        <img src="/mail.png" alt="Correo" />
+      </span>
+      <span class="header-topbar-email">contacto&#64;mousecat.com</span>
+    </div>
+  </div>
+  <div class="header-topbar-divider"></div>
+</div>
+
+<header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile}" [@headerTypeAnimation]>
   <div class="header-bg">
-    <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
-    <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
-    <nav class="header-nav" [class.open]="menuOpen">
-        <a href="#" class="header-link">Servicios <span class="arrow">&#9662;</span></a>
-        <a href="#" class="header-link">Industrias</a>
-        <a href="#" class="header-link">Tecnologías</a>
-        <a href="#" class="header-link">Empresa <span class="arrow">&#9662;</span></a>
-        <a href="#" class="header-link">Blog</a>
-        <a href="#" class="header-btn">Cotizar Proyecto</a>
+    <!-- Sección superior: logo y botón menú -->
+    <div class="header-top" *ngIf="isMobile">
+      <a routerLink="/" class="header-logo-link">
+        <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
+      </a>
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+        <span [class.bar1]="!menuOpen" [class.x1]="menuOpen"></span>
+        <span [class.bar2]="!menuOpen" [class.x2]="menuOpen"></span>
+        <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
+      </button>
+    </div>
+    <!-- Sección superior escritorio -->
+    <div class="header-top" *ngIf="!isMobile">
+      <a routerLink="/" class="header-logo-link">
+        <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
+      </a>
+      <nav class="header-nav">
+        <a routerLink="/servicios" routerLinkActive="active" class="header-link">Servicios <span class="arrow">&#9662;</span></a>
+        <a routerLink="/industrias" routerLinkActive="active" class="header-link">Industrias</a>
+        <a routerLink="/tecnologias" routerLinkActive="active" class="header-link">Tecnologías</a>
+        <a routerLink="/empresa" routerLinkActive="active" class="header-link">Empresa <span class="arrow">&#9662;</span></a>
+        <a routerLink="/blog" routerLinkActive="active" class="header-link">Blog</a>
+        <a routerLink="/cotizar" class="header-btn">Cotizar Proyecto</a>
+      </nav>
+    </div>
+
+    <!-- Línea divisora solo en móvil -->
+    <div class="header-divider" *ngIf="isMobile"></div>
+
+    <!-- Menú móvil desplegable entre la parte superior y la inferior -->
+    <nav class="mobile-nav"
+         *ngIf="isMobile"
+         [@mobileMenuAnimation]="menuOpen ? 'open' : 'closed'"
+         (@mobileMenuAnimation.done)="onMenuAnimationDone()"
+         [style.display]="isMobile && (menuOpen || animating) ? 'flex' : 'none'">
+      <a routerLink="/servicios" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Servicios <span class="arrow">&#9662;</span></a>
+      <a routerLink="/industrias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
+      <a routerLink="/tecnologias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
+      <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Empresa <span class="arrow">&#9662;</span></a>
+      <a routerLink="/blog" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Blog</a>
     </nav>
-    <button class="menu-toggle" (click)="menuOpen = !menuOpen" aria-label="Abrir menú">
-      <span [class.bar1]="!menuOpen" [class.x1]="menuOpen"></span>
-      <span [class.bar2]="!menuOpen" [class.x2]="menuOpen"></span>
-      <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
-    </button>
+
+    <!-- Sección inferior solo móvil -->
+    <div class="header-bottom" *ngIf="isMobile">
+      <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
+    </div>
   </div>
 </header>
