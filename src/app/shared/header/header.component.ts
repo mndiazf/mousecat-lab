@@ -35,17 +35,21 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 })
 export class HeaderComponent implements OnInit {
   menuOpen = false;
-  isMobile: boolean = false;
-  private readonly MOBILE_BREAKPOINT = 1140; // Cambiado de 768 a 1140
-  animating = false; // NUEVO: bandera para bloquear clicks durante animación
-
-  constructor() {}
+  isMobile = false;
+  private readonly MOBILE_BREAKPOINT = 1140;
+  animating = false;
+  megaMenuOpen = false;
+  private megaMenuTimeout: any;
+  mobileServicesMenuOpen = false;
+  mobileCategoryOpenIndex: number|null = null;
+  mobileServicesMenuAnimating = false;
+  mobileCategoryAnimating = false;
 
   ngOnInit(): void {
     this.checkScreenSize();
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize() {
     const wasMobile = this.isMobile;
     this.checkScreenSize();
@@ -59,12 +63,107 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu(): void {
-    if (this.animating) return; // Bloquea clicks durante animación
+    if (this.animating) return;
     this.menuOpen = !this.menuOpen;
     this.animating = true;
+    if (!this.menuOpen) {
+      this.closeAllMobileMenus();
+    }
   }
 
+  toggleMobileServicesMenu() {
+    if (this.mobileServicesMenuAnimating) return;
+    this.mobileServicesMenuAnimating = true;
+    this.mobileServicesMenuOpen = !this.mobileServicesMenuOpen;
+    if (!this.mobileServicesMenuOpen) {
+      this.mobileCategoryOpenIndex = null;
+    }
+    setTimeout(() => {
+      this.mobileServicesMenuAnimating = false;
+    }, 350); // Coincide con la duración de la animación CSS
+  }
+
+  toggleMobileCategory(index: number, event: Event) {
+    event.stopPropagation();
+    if (this.mobileCategoryAnimating) return;
+    this.mobileCategoryAnimating = true;
+    if (this.mobileCategoryOpenIndex === index) {
+      this.mobileCategoryOpenIndex = null;
+    } else {
+      this.mobileCategoryOpenIndex = index;
+    }
+    setTimeout(() => {
+      this.mobileCategoryAnimating = false;
+    }, 350); // Coincide con la duración de la animación CSS
+  }
+
+  closeAllMobileMenus() {
+    this.mobileServicesMenuOpen = false;
+    this.mobileCategoryOpenIndex = null;
+    this.mobileServicesMenuAnimating = false;
+    this.mobileCategoryAnimating = false;
+  }
   onMenuAnimationDone(): void {
     this.animating = false;
+  }
+
+  showMegaMenu() {
+    clearTimeout(this.megaMenuTimeout);
+    this.megaMenuOpen = true;
+  }
+
+  hideMegaMenu() {
+    this.megaMenuTimeout = setTimeout(() => {
+      this.megaMenuOpen = false;
+    }, 120);
+  }
+  mobileSubmenuOpen = false;
+  selectedCategory: any = null;
+  
+  services = [
+    {
+      title: 'Desarrollo de Software',
+      items: [
+        { name: 'Desarrollo Web', link: '/servicios/web' },
+        { name: 'eCommerce', link: '/servicios/ecommerce' },
+        { name: 'Integración de Sistemas', link: '/servicios/integracion' },
+        { name: 'Software a medida', link: '/servicios/medida' }
+      ]
+    },
+    {
+      title: 'Aplicaciones Móviles',
+      items: [
+        { name: 'Desarrollo de Aplicaciones Móviles', link: '/servicios/moviles' }
+      ]
+    },
+    {
+      title: 'Soluciones Cloud',
+      items: [
+        { name: 'Asesoría en soluciones Cloud', link: '/servicios/cloud-asesoria' },
+        { name: 'Despliegue de Infraestructura', link: '/servicios/cloud-despliegue' },
+        { name: 'Diseño de Soluciones Cloud', link: '/servicios/cloud-diseno' },
+        { name: 'Mantención y Soporte Cloud', link: '/servicios/cloud-soporte' }
+      ]
+    },
+    {
+      title: 'Otros Servicios',
+      items: [
+        { name: 'Consultoría TI', link: '/servicios/consultoria' },
+        { name: 'Soporte y Mantenimiento', link: '/servicios/soporte' }
+      ]
+    }
+  ];
+
+  toggleSubmenu() {
+    this.mobileSubmenuOpen = !this.mobileSubmenuOpen;
+    if (!this.mobileSubmenuOpen) this.selectedCategory = null;
+  }
+
+  selectCategory(category: any) {
+    this.selectedCategory = category;
+  }
+
+  goBackToCategories() {
+    this.selectedCategory = null;
   }
 }

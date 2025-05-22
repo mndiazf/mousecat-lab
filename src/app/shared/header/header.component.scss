@@ -52,14 +52,8 @@
   color: variables.$color-content-alt;
 }
 
-.header-topbar-label {
-  margin-right: 0.5rem;
-}
-
-.header-topbar-email {
-  margin-left: 0.5rem;
-}
-
+.header-topbar-label { margin-right: 0.5rem; }
+.header-topbar-email { margin-left: 0.5rem; }
 .header-topbar-left,
 .header-topbar-right {
   display: flex;
@@ -87,10 +81,6 @@
   padding: 0;
   display: flex;
   justify-content: center;
-
-  @media (max-width: 1140px) {
-    top: 0;
-  }
 }
 
 .header-bg {
@@ -207,6 +197,8 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  position: relative;
+  z-index: 1100;
   @media (max-width: 1140px) {
     display: none !important;
   }
@@ -300,15 +292,241 @@
   border: none;
   text-align: left;
   justify-content: flex-start;
-  border-bottom: 1px solid darken(variables.$color-bg-alt, 15%);
-  transition: background 0.2s, color 0.2s;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  position: relative;
+  .arrow {
+    margin-left: auto;
+    transition: transform 0.3s;
+    &.open {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.mobile-services-menu {
+  background: #f2f2f2;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(120,63,161,0.06);
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  z-index: 1;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: none; // Sin animación al cerrar
+
+  &.open {
+    max-height: 1000px;
+    opacity: 1;
+    overflow: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    // Animación solo al abrir
+  }
+}
+
+.mobile-services-submenu {
+  max-height: 0;
+  overflow: hidden;
+  background: #e0e0e0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s, opacity 0.3s, transform 0.3s;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  &.open {
+    max-height: 500px;
+    padding: 0.5rem 2rem 1rem 2rem;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-services-category {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: variables.$color-accent-primary;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background: transparent;
+  .arrow {
+    transition: transform 0.3s;
+    &.open {
+      transform: rotate(90deg);
+    }
+  }
+  &:hover {
+    background: #eaeaea;
+  }
+}
+
+.mobile-services-category-wrapper {
+  position: relative;
+}
+
+.mobile-services-submenu {
+  max-height: 0;
+  overflow: hidden;
+  background: #e0e0e0;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  &.open {
+    max-height: 500px;
+    padding: 0.5rem 2rem 1rem 2rem;
+  }
+}
+
+.mobile-services-item {
+  display: block;
+  padding: 0.75rem 0;
+  color: variables.$color-accent-primary;
+  text-decoration: none;
+  font-size: 0.98rem;
+  border-bottom: 1px solid #d0d0d0;
   &:last-child {
     border-bottom: none;
   }
   &:hover {
-    background: rgba(120, 63, 161, 0.08);
-    color: variables.$color-accent-secondary;
+    background: #d4d4d4;
   }
+}
+.header-nav {
+  position: relative;
+  z-index: 1100;
+}
+
+.mobile-submenu-container {
+  width: 100%;
+  background: variables.$color-bg-alt;
+}
+
+.mobile-submenu-header {
+  padding: 1.25rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: variables.$color-accent-primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid darken(variables.$color-bg-alt, 15%);
+  cursor: pointer;
+}
+
+.submenu-categories, .submenu-items {
+  background: darken(variables.$color-bg-alt, 3%);
+  transition: transform 0.3s ease;
+}
+
+.submenu-category {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: variables.$color-primary;
+  border-bottom: 1px solid rgba(120, 63, 161, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  
+  &:hover {
+    background: darken(variables.$color-bg-alt, 5%);
+  }
+}
+
+.submenu-back {
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: variables.$color-accent-secondary;
+  cursor: pointer;
+  background: darken(variables.$color-bg-alt, 5%);
+}
+
+.submenu-item {
+  display: block;
+  padding: 1rem 3rem;
+  color: variables.$color-accent-primary;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(120, 63, 161, 0.1);
+  
+  &:hover {
+    background: darken(variables.$color-bg-alt, 7%);
+  }
+}
+.mega-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 2px);
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  background: variables.$color-bg-card;
+  box-shadow: 0 8px 32px rgba(120, 63, 161, 0.12);
+  border-radius: 0 0 2rem 2rem;
+  display: flex;
+  z-index: 2000;
+  padding: 2rem 2rem 2rem 2rem;
+  border-top: 2px solid variables.$color-accent-primary;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1), visibility 0.35s;
+  transform: translateX(-50%) translateY(-10px);
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (max-width: 1140px) {
+    display: none !important;
+  }
+}
+.mega-menu-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+.mega-menu-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: variables.$color-accent-primary;
+}
+.mega-menu-item {
+  color: variables.$color-dark-bg;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s, background 0.2s, transform 0.2s;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  &:hover, &:focus {
+    color: variables.$color-accent-secondary;
+    background: darken(variables.$color-bg-alt, 7%);
+    text-decoration: none;
+    transform: translateX(8px) scale(1.05);
+  }
+}
+.mega-menu-divider {
+  width: 1px;
+  background: #e0e0e0;
+  margin: 0 1rem;
+  align-self: stretch;
 }

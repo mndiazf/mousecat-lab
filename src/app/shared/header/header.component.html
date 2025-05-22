@@ -22,7 +22,6 @@
 
 <header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile}" [@headerTypeAnimation]>
   <div class="header-bg">
-    <!-- Sección superior: logo y botón menú -->
     <div class="header-top" *ngIf="isMobile">
       <a routerLink="/" class="header-logo-link">
         <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
@@ -33,38 +32,97 @@
         <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
       </button>
     </div>
-    <!-- Sección superior escritorio -->
     <div class="header-top" *ngIf="!isMobile">
       <a routerLink="/" class="header-logo-link">
         <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
       </a>
       <nav class="header-nav">
-        <a routerLink="/servicios" routerLinkActive="active" class="header-link">Servicios <span class="arrow">&#9662;</span></a>
+        <div class="header-link header-link-servicios"
+             (mouseenter)="showMegaMenu()"
+             (mouseleave)="hideMegaMenu()"
+             [class.active]="megaMenuOpen">
+          Servicios <span class="arrow">&#9662;</span>
+        </div>
         <a routerLink="/industrias" routerLinkActive="active" class="header-link">Industrias</a>
         <a routerLink="/tecnologias" routerLinkActive="active" class="header-link">Tecnologías</a>
-        <a routerLink="/empresa" routerLinkActive="active" class="header-link">Empresa <span class="arrow">&#9662;</span></a>
+        <a routerLink="/empresa" routerLinkActive="active" class="header-link">Sobre nosotros</a>
         <a routerLink="/blog" routerLinkActive="active" class="header-link">Blog</a>
         <a routerLink="/cotizar" class="header-btn">Cotizar Proyecto</a>
       </nav>
+      <!-- MegaMenu fuera del nav, pero dentro de header-bg -->
+      <div class="mega-menu" 
+           [class.show]="megaMenuOpen"
+           (mouseenter)="showMegaMenu()"
+           (mouseleave)="hideMegaMenu()">
+        <div class="mega-menu-column">
+          <div class="mega-menu-title">Desarrollo de Software</div>
+          <a routerLink="/servicios/web" class="mega-menu-item">Desarrollo Web</a>
+          <a routerLink="/servicios/ecommerce" class="mega-menu-item">eCommerce</a>
+          <a routerLink="/servicios/integracion" class="mega-menu-item">Integración de Sistemas</a>
+          <a routerLink="/servicios/medida" class="mega-menu-item">Software a medida</a>
+        </div>
+        <div class="mega-menu-divider"></div>
+        <div class="mega-menu-column">
+          <div class="mega-menu-title">Aplicaciones Móviles</div>
+          <a routerLink="/servicios/moviles" class="mega-menu-item">Desarrollo de Aplicaciones Móviles</a>
+        </div>
+        <div class="mega-menu-divider"></div>
+        <div class="mega-menu-column">
+          <div class="mega-menu-title">Soluciones Cloud</div>
+          <a routerLink="/servicios/cloud-asesoria" class="mega-menu-item">Asesoría en soluciones Cloud</a>
+          <a routerLink="/servicios/cloud-despliegue" class="mega-menu-item">Despliegue de Infraestructura</a>
+          <a routerLink="/servicios/cloud-diseno" class="mega-menu-item">Diseño de Soluciones Cloud</a>
+          <a routerLink="/servicios/cloud-soporte" class="mega-menu-item">Mantención y Soporte Cloud</a>
+        </div>
+        <div class="mega-menu-divider"></div>
+        <div class="mega-menu-column">
+          <div class="mega-menu-title">Otros Servicios</div>
+          <a routerLink="/servicios/consultoria" class="mega-menu-item">Consultoría TI</a>
+          <a routerLink="/servicios/soporte" class="mega-menu-item">Soporte y Mantenimiento de Software</a>
+        </div>
+      </div>
     </div>
-
-    <!-- Línea divisora solo en móvil -->
     <div class="header-divider" *ngIf="isMobile"></div>
-
-    <!-- Menú móvil desplegable entre la parte superior y la inferior -->
     <nav class="mobile-nav"
          *ngIf="isMobile"
          [@mobileMenuAnimation]="menuOpen ? 'open' : 'closed'"
          (@mobileMenuAnimation.done)="onMenuAnimationDone()"
          [style.display]="isMobile && (menuOpen || animating) ? 'flex' : 'none'">
-      <a routerLink="/servicios" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Servicios <span class="arrow">&#9662;</span></a>
+
+      <!-- Botón Servicios con submenú -->
+      <div class="header-link mobile-servicios-btn" (click)="toggleMobileServicesMenu()">
+        Servicios
+        <span class="arrow" [class.open]="mobileServicesMenuOpen">&#9654;</span>
+      </div>
+      <div class="mobile-services-menu"
+           [class.open]="mobileServicesMenuOpen">
+        <div class="mobile-services-category-wrapper" *ngFor="let category of services; let i = index">
+          <div class="mobile-services-category"
+               (click)="toggleMobileCategory(i, $event)">
+            <span>{{category.title}}</span>
+            <span class="arrow"
+                  [class.open]="mobileCategoryOpenIndex === i">&#9654;</span>
+          </div>
+          <div class="mobile-services-submenu"
+               [class.open]="mobileCategoryOpenIndex === i">
+            <div *ngIf="mobileCategoryOpenIndex === i">
+              <a *ngFor="let item of category.items"
+                 routerLink="{{item.link}}"
+                 class="mobile-services-item"
+                 (click)="closeAllMobileMenus()">
+                 {{item.name}}
+               </a>
+             </div>
+           </div>
+         </div>
+       </div>
+
+      <!-- Resto de los links -->
       <a routerLink="/industrias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
       <a routerLink="/tecnologias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
-      <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Empresa <span class="arrow">&#9662;</span></a>
+      <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Sobre nosotros</a>
       <a routerLink="/blog" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Blog</a>
     </nav>
-
-    <!-- Sección inferior solo móvil -->
     <div class="header-bottom" *ngIf="isMobile">
       <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
     </div>
