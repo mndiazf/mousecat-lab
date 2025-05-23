@@ -1,5 +1,5 @@
 <!-- Franja superior con línea divisora -->
-<div class="header-topbar">
+<div class="header-topbar" [class.hidden]="!showTopbar">
   <div class="header-topbar-content">
     <div class="header-topbar-left">
       <span class="header-topbar-label">Síguenos:</span>
@@ -20,8 +20,8 @@
   <div class="header-topbar-divider"></div>
 </div>
 
-<header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile}" [@headerTypeAnimation]>
-  <div class="header-bg">
+<header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile, 'scrolled': isScrolled}" [@headerTypeAnimation]>
+  <div class="header-bg" [class.scrolled]="isScrolled">
     <div class="header-top" *ngIf="isMobile">
       <a routerLink="/" class="header-logo-link">
         <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
@@ -34,7 +34,7 @@
     </div>
     <div class="header-top" *ngIf="!isMobile">
       <a routerLink="/" class="header-logo-link">
-        <img src="/mousecat-logow.png" alt="Mousecat Logo" class="header-logo desktop-logo" />
+        <img [src]="isScrolled ? '/mousecat-logo.png' : '/mousecat-logow.png'" alt="Mousecat Logo" class="header-logo desktop-logo" />
       </a>
       <nav class="header-nav">
         <div class="header-link header-link-servicios"
@@ -128,3 +128,12 @@
     </div>
   </div>
 </header>
+
+<!-- Botón Scroll to Top -->
+<button 
+  class="scroll-to-top-btn" 
+  [class.visible]="isScrolled && isMobile" 
+  (click)="scrollToTop()"
+  aria-label="Volver arriba">
+  <img src="/arrow-up.png" alt="Flecha arriba" class="arrow-up-img">
+</button>

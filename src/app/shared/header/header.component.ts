@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { trigger, transition, style, animate, state } from '@angular/animations';
@@ -33,7 +33,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
     ])
   ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   menuOpen = false;
   isMobile = false;
   private readonly MOBILE_BREAKPOINT = 1140;
@@ -44,9 +44,16 @@ export class HeaderComponent implements OnInit {
   mobileCategoryOpenIndex: number|null = null;
   mobileServicesMenuAnimating = false;
   mobileCategoryAnimating = false;
+  showTopbar = true;
+  isScrolled = false;
 
   ngOnInit(): void {
     this.checkScreenSize();
+    window.addEventListener('scroll', this.onWindowScroll, { passive: true });
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.onWindowScroll);
   }
 
   @HostListener('window:resize')
@@ -60,6 +67,19 @@ export class HeaderComponent implements OnInit {
 
   private checkScreenSize(): void {
     this.isMobile = window.innerWidth < this.MOBILE_BREAKPOINT;
+  }
+
+  onWindowScroll = () => {
+    const scrollY = window.scrollY;
+    this.showTopbar = scrollY < 10;
+    this.isScrolled = scrollY > 28;
+  };
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   toggleMenu(): void {
@@ -80,7 +100,7 @@ export class HeaderComponent implements OnInit {
     }
     setTimeout(() => {
       this.mobileServicesMenuAnimating = false;
-    }, 350); // Coincide con la duración de la animación CSS
+    }, 350);
   }
 
   toggleMobileCategory(index: number, event: Event) {
@@ -94,7 +114,7 @@ export class HeaderComponent implements OnInit {
     }
     setTimeout(() => {
       this.mobileCategoryAnimating = false;
-    }, 350); // Coincide con la duración de la animación CSS
+    }, 350);
   }
 
   closeAllMobileMenus() {
@@ -103,6 +123,7 @@ export class HeaderComponent implements OnInit {
     this.mobileServicesMenuAnimating = false;
     this.mobileCategoryAnimating = false;
   }
+
   onMenuAnimationDone(): void {
     this.animating = false;
   }
@@ -117,9 +138,7 @@ export class HeaderComponent implements OnInit {
       this.megaMenuOpen = false;
     }, 120);
   }
-  mobileSubmenuOpen = false;
-  selectedCategory: any = null;
-  
+
   services = [
     {
       title: 'Desarrollo de Software',
@@ -153,17 +172,4 @@ export class HeaderComponent implements OnInit {
       ]
     }
   ];
-
-  toggleSubmenu() {
-    this.mobileSubmenuOpen = !this.mobileSubmenuOpen;
-    if (!this.mobileSubmenuOpen) this.selectedCategory = null;
-  }
-
-  selectCategory(category: any) {
-    this.selectedCategory = category;
-  }
-
-  goBackToCategories() {
-    this.selectedCategory = null;
-  }
 }
