@@ -1,3 +1,281 @@
 <app-hero-section [title]="'Mousecat desarrolla sitios web, aplicaciones móviles y software a medida para su negocio'"></app-hero-section>
-<div class="fondo">
-</div>
+
+
+<!-- HERO ─────────────────────────────────────────────────────────── -->
+<section class="hero section">
+    <div class="container hero__grid">
+      <div class="hero__text fade-in">
+        <h1>Tu <span class="accent-primary">Partner Tecnológico </span> </h1>
+        <br>
+        <h2>En Mousecat, transformamos tus ideas en soluciones digitales innovadoras.</h2>
+        <p>
+          Optimizamos tus recursos, reducimos costos y aceleramos proyectos clave. Nos convertimos en tu aliado
+          estratégico, colaborando estrechamente con tu equipo para asegurar resultados eficientes y de alto impacto.
+        </p>
+        <div class="btn-group">
+          <button class="btn btn--primary">Cotizar proyecto</button>
+        </div>
+      </div>
+  
+      <div class="hero__image">
+        <!-- Sustituye la imagen por la definitiva -->
+        <img src="/web.png" alt="Equipo de desarrollo">
+      </div>
+    </div>
+  </section>
+  
+  <!-- SERVICES ──────────────────────────────────────────────────────── -->
+  <section id="services" class="section">
+    <div class="container services__grid_new"> <!-- Changed class for new layout -->
+      <div class="services__info">
+        <h2>Qué hacemos</h2>
+        <p>
+          Ayudamos a pequeñas y grandes empresas a alcanzar el máximo potencial de la tecnología desarrollando sitios web, aplicaciones y software a medida que revolucionen la industria.
+        </p>
+        
+        <!-- Category Buttons -->
+        <div class="service-category-buttons">
+          <button *ngFor="let category of serviceCategories" 
+                  class="btn btn--outline" 
+                  [class.active]="category.id === selectedServiceCategoryId"
+                  (click)="selectServiceCategory(category.id)">
+            {{ category.categoryName }}
+          </button>
+        </div>
+      </div>
+  
+      <!-- Service Cards for selected category -->
+      <div class="service-card-grid">
+        <article *ngFor="let serviceItem of displayedServices" class="card card--service-item">
+          <div class="card__image-container" [style.backgroundImage]="'url(' + serviceItem.backgroundImageUrl + ')'">
+            <div class="card__overlay">
+              <span class="card__overlay-text">Me interesa</span>
+            </div>
+          </div>
+          <h3 class="card__title">{{ serviceItem.title }}</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- TECHNOLOGIES ──────────────────────────────────────────────────── -->
+  <section id="technologies" class="section section--alt">
+    <div class="container">
+      <div class="text-center">
+        <h2>Tecnologías que dominamos</h2>
+      </div>
+      <div class="technologies-layout">
+        <div class="technologies-layout__text">
+          <p>Trabajamos con las tecnologías más modernas y confiables del mercado para ofrecerte soluciones robustas, escalables y de vanguardia. Nuestro equipo se mantiene constantemente actualizado para asegurar que tu proyecto se beneficie de las últimas innovaciones y mejores prácticas.</p>
+        </div>
+        <div class="technologies-layout__carousel">
+          <div class="tech-carousel-wrapper">
+            <div class="tech-carousel-track">
+              <!-- Duplicate items for seamless looping -->
+              <div *ngFor="let t of technologies" class="tech-item">
+                <div class="tech__badge" [style.background]="t.color">
+                  <img *ngIf="t.iconUrl" [src]="t.iconUrl" [alt]="t.name + ' logo'" class="tech__icon">
+                  <ng-container *ngIf="!t.iconUrl">{{ t.name | slice:0:2 }}</ng-container>
+                </div>
+                <span class="tech__name">{{ t.name }}</span>
+              </div>
+              <div *ngFor="let t of technologies" class="tech-item" aria-hidden="true">
+                <div class="tech__badge" [style.background]="t.color">
+                  <img *ngIf="t.iconUrl" [src]="t.iconUrl" [alt]="t.name + ' logo'" class="tech__icon">
+                  <ng-container *ngIf="!t.iconUrl">{{ t.name | slice:0:2 }}</ng-container>
+                </div>
+                <span class="tech__name">{{ t.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- WHY CHOOSE ────────────────────────────────────────────────────── -->
+  <section class="section why-choose-section"> <!-- Added a specific class for this section -->
+      <div class="container text-center">
+        <h2>¿Por qué elegir Mousecat?</h2>
+        <p>Cuatro razones que nos convierten en tu mejor aliado tecnológico</p>
+        <br>
+  
+        <div class="card-grid card-grid--why">
+          <!-- Tarjeta 01: Actualizada -->
+          <article class="card card--why">
+            <div class="card--why__content-wrapper">
+              <div class="card--why__visible-content">
+                <h3>Buenas Prácticas y Calidad</h3>
+                <span class="card--why__index">01</span>
+              </div>
+              <div class="card--why__hover-text">
+                <p>Nos adherimos a los más altos estándares de la industria, aplicando metodologías ágiles y pruebas exhaustivas para garantizar software robusto, mantenible y de alta calidad.</p>
+              </div>
+            </div>
+          </article>
+  
+          <!-- Tarjeta 02 -->
+          <article class="card card--why alt">
+            <div class="card--why__content-wrapper">
+              <div class="card--why__visible-content">
+                <h3>Consultoría tecnológica</h3>
+                <span class="card--why__index">02</span>
+              </div>
+              <div class="card--why__hover-text">
+                <p>No solo desarrollamos, también te guiamos en la elección de tecnologías, arquitecturas y estrategias que maximicen el ROI de tu inversión.</p>
+              </div>
+            </div>
+          </article>
+  
+          <!-- Tarjeta 03 -->
+          <article class="card card--why dark">
+            <div class="card--why__content-wrapper">
+              <div class="card--why__visible-content">
+                <h3>Trabajo flexible y rentable</h3>
+                <span class="card--why__index">03</span>
+              </div>
+              <div class="card--why__hover-text">
+                <p>Ofrecemos modalidades de trabajo remoto, presencial o híbrido, con precios competitivos y transparentes sin costos ocultos.</p>
+              </div>
+            </div>
+          </article>
+  
+          <!-- Tarjeta 04 -->
+          <article class="card card--why dark-alt">
+            <div class="card--why__content-wrapper">
+              <div class="card--why__visible-content">
+                <h3>Reducción de riesgo en PMV</h3>
+                <span class="card--why__index">04</span>
+              </div>
+              <div class="card--why__hover-text">
+                <p>Aplicamos metodologías ágiles y validación temprana para reducir riesgos y asegurar que tu PMV tenga el mayor impacto posible.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  <!-- DYNAMIC INDUSTRY SHOWCASE ─────────────────────────────────────── -->
+  <section id="dynamic-industries" class="section section--alt">
+    <div class="container dynamic-industry__grid">
+      <div class="dynamic-industry__text">
+        <h2>Mousecat</h2>
+        <p class="dynamic-industry__subtitle">
+          expertos en <span class="dynamic-industry__name" [class.fade-out]="isIndustryAnimatingOut">{{ currentAnimatedIndustry }}</span>
+        </p>
+        <!-- Puedes agregar más texto descriptivo aquí si lo deseas -->
+        <p>Nos especializamos en transformar negocios a través de soluciones tecnológicas innovadoras y a medida para diversos sectores.</p>
+      </div>
+      <div class="dynamic-industry__image">
+        <img src="/gatoverso.png" alt="Gatoverso Mousecat Lab">
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT ───────────────────────────────────────────────────────── -->
+  <section id="contact" class="section section--dark text-white">
+    <div class="container contact__grid">
+      <!-- Datos -->
+      <div class="contact__info">
+        <h2>Hablemos de tu proyecto</h2>
+        <p class="muted">
+          ¿Tienes una idea? ¿Necesitas optimizar un proceso? ¿Quieres escalar tu negocio? Contáctanos y descubre cómo
+          podemos ayudarte.
+        </p>
+  
+        <ul class="contact__list">
+          <li><i class="mail"></i> contactomousecat.com</li>
+          <li><i class="phone"></i> +1 (555) 123-4567</li>
+          <li><i class="map-pin"></i> Trabajo remoto y presencial</li>
+        </ul>
+      </div>
+  
+      <!-- Formulario -->
+      <form [formGroup]="contactForm" (ngSubmit)="submit()" class="card card--form">
+        <h3>Envíanos un mensaje</h3>
+        <p class="muted">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.</p>
+  
+        <div class="form-grid">
+          <label>
+            <span>Nombre completo</span>
+            <input formControlName="name" />
+          </label>
+  
+          <label>
+            <span>Correo electrónico</span>
+            <input type="email" formControlName="email" />
+          </label>
+        </div>
+  
+        <label>
+          <span>Empresa</span>
+          <input formControlName="company" />
+        </label>
+  
+        <label>
+          <span>Tipo de proyecto</span>
+          <select formControlName="projectType">
+            <option value="" disabled selected>Selecciona el tipo de proyecto</option>
+            <option value="web">Desarrollo Web</option>
+            <option value="ecommerce">eCommerce</option>
+            <option value="integration">Integración de Sistemas</option>
+            <option value="custom">Software a medida</option>
+            <option value="consulting">Consultoría</option>
+            <option value="other">Otro</option>
+          </select>
+        </label>
+  
+        <label>
+          <span>Mensaje</span>
+          <textarea rows="4" formControlName="message"></textarea>
+        </label>
+  
+        <button type="submit" class="btn btn--primary w-100">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- FOOTER ────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h3 class="accent-primary">Mousecat</h3>
+        <p class="muted">Tu partner tecnológico para el desarrollo de software a medida.</p>
+      </div>
+  
+      <nav>
+        <h4>Servicios</h4>
+        <ul>
+          <li>Desarrollo Web</li>
+          <li>eCommerce</li>
+          <li>Integración de Sistemas</li>
+          <li>Software a medida</li>
+        </ul>
+      </nav>
+  
+      <nav>
+        <h4>Empresa</h4>
+        <ul>
+          <li>Sobre nosotros</li>
+          <li>Casos de éxito</li>
+          <li>Blog</li>
+          <li>Carreras</li>
+        </ul>
+      </nav>
+  
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>contactomousecat.com</li>
+          <li>+1 (555) 123-4567</li>
+          <li>Trabajo remoto y presencial</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="footer__bottom">
+      &copy; {{ year }} Mousecat. Todos los derechos reservados.
+    </div>
+  </footer>
+  

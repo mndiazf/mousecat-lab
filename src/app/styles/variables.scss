@@ -6,4 +6,9 @@ $color-accent-secondary: #783FA1; // Acento Secundario (Morado Intenso)
 $color-bg-card: #F7F7F7; // Fondo de Tarjetas/Secciones (Gris Claro)
 $color-bg-alt: #EFEAF5; // Fondo Alternativo (Lavanda Claro)
 $color-dark-bg: #2B2B31FF; // Fondo Oscuro Alternativo (Negro Grisáceo)
-
+$color-text-muted: #2B2B31FF; // Fondo Oscuro Alternativo (Negro Grisáceo)
+$color-text-on-dark: #2B2B31FF;
+$color-text-subtle-on-dark: #2B2B31FF;
+$color-border-soft: #dde2e7;       // Para bordes de input más suaves
+$color-text-placeholder: #a0aec0; // Para el texto del placeholder
+$color-dark-bg-card: lighten($color-dark-bg, 5%); // Si el fondo de la sección es oscuro, una tarjeta un poco más clara
