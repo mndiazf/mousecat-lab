@@ -191,9 +191,30 @@ export class HomeComponent implements OnInit, OnDestroy { // Implementa OnInit y
       this.contactForm.markAllAsTouched();
       return;
     }
-    // Aquí conectas con tu backend o servicio de correo
-    console.log('Formulario enviado', this.contactForm.value);
+    
+    // Obtener los datos del formulario
+    const formData = this.contactForm.value;
+    
+    // Crear el cuerpo del correo con formato
+    const subject = `Nuevo contacto desde web: ${formData.name}`;
+    const body = `Nombre: ${formData.name}\n\n` +
+                `Email: ${formData.email}\n\n` +
+                `Empresa: ${formData.company || 'No especificada'}\n\n` +
+                `Tipo de proyecto: ${formData.projectType}\n\n` +
+                `Mensaje:\n${formData.message}`;
+    
+    // Crear el enlace mailto para abrir el cliente de correo predeterminado
+    const mailtoLink = `mailto:contactomousecat.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Abrir el cliente de correo con los datos prellenados
+    window.location.href = mailtoLink;
+    
+    // Resetear el formulario después de enviar
     this.contactForm.reset();
-    alert('¡Mensaje enviado con éxito!');
+    
+    // Opcional: mostrar confirmación
+    setTimeout(() => {
+      alert('¡Formulario preparado para envío!');
+    }, 500);
   }
 }
