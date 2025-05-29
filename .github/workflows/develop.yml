@@ -7,14 +7,13 @@ on:
 
 jobs:
   deploy:
-    name: Build and Deploy to Cloud Run
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Authenticate with Google Cloud
+    - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
@@ -25,21 +24,20 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT }}
         install_components: 'beta'
 
-    - name: Configure Docker to use Artifact Registry
-      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
-
-    - name: Build Docker image
+    - name: Configure Docker for Artifact Registry
       run: |
-        docker build -t us-central1-docker.pkg.dev/mousecat-web/mousecat-lab/mousecat-web:$GITHUB_SHA .
+        gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
 
-    - name: Push Docker image
+    - name: Build and Push Docker image
       run: |
-        docker push us-central1-docker.pkg.dev/mousecat-web/mousecat-lab/mousecat-web:$GITHUB_SHA
+        docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-web:$GITHUB_SHA .
+        docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-web:$GITHUB_SHA
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
-          --image us-central1-docker.pkg.dev/mousecat-web/mousecat-lab/mousecat-web:$GITHUB_SHA \
-          --region us-central1 \
-          --platform managed \
+          --image=us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-web:$GITHUB_SHA \
+          --region=us-central1 \
+          --platform=managed \
+          --allow-unauthenticated \
           --quiet
