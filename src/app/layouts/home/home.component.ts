@@ -98,18 +98,18 @@ export class HomeComponent implements OnInit, OnDestroy { // Implementa OnInit y
   selectedServiceCategoryId: string = this.serviceCategories[0]?.id || ''; // Default to the first category
 
   technologies: TechBadge[] = [
-    { name: 'JavaScript',  color: '#FFFFFF', iconUrl: '/icons/javascript.png' }, 
-    { name: 'React',       color: '#FFFFFF', iconUrl: '/icons/react.png' },      
-    { name: 'Angular',     color: '#FFFFFF', iconUrl: '/icons/angular.png' },     
-    { name: 'Node.js',     color: '#FFFFFF', iconUrl: '/icons/nodejs.webp' },     
-    { name: 'Java',        color: '#FFFFFF', iconUrl: '/icons/java.webp' },        
-    { name: 'Spring',      color: '#FFFFFF', iconUrl: '/icons/spring.svg' },      
-    { name: 'AWS',         color: '#FFFFFF', iconUrl: '/icons/aws.png' },         
-    { name: 'Docker',      color: '#FFFFFF', iconUrl: '/icons/docker.png' },      
-    { name: 'MySQL',       color: '#FFFFFF', iconUrl: '/icons/mysql.webp' },      
-    { name: 'PostgreSQL',  color: '#FFFFFF', iconUrl: '/icons/postgresql.png' },  
-    { name: 'TypeScript',  color: '#FFFFFF', iconUrl: '/icons/typescript.png' },  
-    { name: 'Python',      color: '#FFFFFF', iconUrl: '/icons/python.webp' },      
+    { name: 'JavaScript',  color: '#FFFFFF', iconUrl: '/javascript.png' }, 
+    { name: 'React',       color: '#FFFFFF', iconUrl: '/react.png' },      
+    { name: 'Angular',     color: '#FFFFFF', iconUrl: '/angular.png' },     
+    { name: 'Node.js',     color: '#FFFFFF', iconUrl: '/nodejs.webp' },     
+    { name: 'Java',        color: '#FFFFFF', iconUrl: '/java.webp' },        
+    { name: 'Spring',      color: '#FFFFFF', iconUrl: '/spring.svg' },      
+    { name: 'AWS',         color: '#FFFFFF', iconUrl: '/aws.png' },         
+    { name: 'Docker',      color: '#FFFFFF', iconUrl: '/docker.png' },      
+    { name: 'MySQL',       color: '#FFFFFF', iconUrl: '/mysql.webp' },      
+    { name: 'PostgreSQL',  color: '#FFFFFF', iconUrl: '/postgresql.png' },  
+    { name: 'TypeScript',  color: '#FFFFFF', iconUrl: '/typescript.png' },  
+    { name: 'Python',      color: '#FFFFFF', iconUrl: '/python.webp' },      
   ];
 
   industries: IndustryCard[] = [
