@@ -25,21 +25,21 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT }}
         install_components: 'beta'
 
-    - name: Configure Docker to use gcloud as a credential helper
-      run: gcloud auth configure-docker --quiet
+    - name: Configure Docker to use Artifact Registry
+      run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
 
     - name: Build Docker image
       run: |
-        docker build -t gcr.io/${{ secrets.GCP_PROJECT }}/mousecat-lab:$GITHUB_SHA .
+        docker build -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-lab:$GITHUB_SHA .
 
-    - name: Push image to Container Registry
+    - name: Push image to Artifact Registry
       run: |
-        docker push gcr.io/${{ secrets.GCP_PROJECT }}/mousecat-lab:$GITHUB_SHA
+        docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-lab:$GITHUB_SHA
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy ${{ secrets.CLOUD_RUN_SERVICE }} \
-          --image gcr.io/${{ secrets.GCP_PROJECT }}/mousecat-lab:$GITHUB_SHA \
+          --image us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/mousecat-lab/mousecat-lab:$GITHUB_SHA \
           --region ${{ secrets.GCP_REGION }} \
           --platform managed \
           --quiet
