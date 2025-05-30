@@ -1,0 +1,138 @@
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2 class="section-title">Conversemos<span class="accent-dot">.</span></h2>
+        <p class="contact-description">
+          Si tienes algún proyecto en mente completa nuestro formulario de cotización, o resuelva sus dudas previas de forma gratuita!
+        </p>
+        <button type="button" class="cta-button">Cotizar proyecto</button>
+      </div>
+      
+      <div class="contact-form-container">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Tu nombre <span class="required">*</span></label>
+              <input 
+                type="text" 
+                id="firstName" 
+                formControlName="firstName" 
+                placeholder="Nombre"
+                [ngClass]="{'invalid': submitted && f['firstName'].errors}"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName">Tu Apellido <span class="required">*</span></label>
+              <input 
+                type="text" 
+                id="lastName" 
+                formControlName="lastName" 
+                placeholder="Apellido"
+                [ngClass]="{'invalid': submitted && f['lastName'].errors}"
+              >
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Correo electrónico <span class="required">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                formControlName="email" 
+                placeholder="correo@email.com"
+                [ngClass]="{'invalid': submitted && f['email'].errors}"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Teléfono <span class="required">*</span></label>
+              <div class="phone-input">
+                <div class="country-code">
+                  <span class="flag">🇨🇱</span>
+                  <span>+56</span>
+                </div>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  formControlName="phone" 
+                  placeholder="2123 4567"
+                  [ngClass]="{'invalid': submitted && f['phone'].errors}"
+                >
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Empresa <span class="optional">(opcional)</span></label>
+              <input 
+                type="text" 
+                id="company" 
+                formControlName="company" 
+                placeholder="LINELAB"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="contactPreference">¿Dónde te contactamos? <span class="required">*</span></label>
+              <select 
+                id="contactPreference" 
+                formControlName="contactPreference"
+                [ngClass]="{'invalid': submitted && f['contactPreference'].errors}"
+              >
+                <option *ngFor="let option of contactOptions" [value]="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="helpNeeded">¿Sobre qué necesitas ayuda? <span class="required">*</span></label>
+            <select 
+              id="helpNeeded" 
+              formControlName="helpNeeded"
+              [ngClass]="{'invalid': submitted && f['helpNeeded'].errors}"
+            >
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="cotizacion" selected>Cotización</option>
+              <option value="web">Desarrollo Web</option>
+              <option value="mobile">Aplicaciones Móviles</option>
+              <option value="cloud">Soluciones Cloud</option>
+              <option value="consulting">Consultoría IT</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="message">Cómo podemos ayudarte <span class="required">*</span></label>
+            <textarea 
+              id="message" 
+              formControlName="message" 
+              rows="5"
+              [ngClass]="{'invalid': submitted && f['message'].errors}"
+            ></textarea>
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="submit-button" [disabled]="submitted">
+              <span *ngIf="!submitted">Enviar</span>
+              <span *ngIf="submitted" class="loading-spinner"></span>
+            </button>
+          </div>
+          
+          <div *ngIf="success" class="success-message">
+            <strong>¡Gracias por contactarnos!</strong> Te responderemos a la brevedad a través del medio que seleccionaste.
+          </div>
+          
+          <div *ngIf="errorMessage" class="error-message">
+            <strong>Error:</strong> {{ errorMessage }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+<app-hero-section [title]="'Desarrollo Web'" [subtitle]="'Nuestros servicios de desarrollo web incluyen la creación de sitios desde cero, la personalización de varios entornos CMS, la creación de aplicaciones web y el mantenimiento posterior al lanzamiento. Nos actualizamos con las últimas tecnologías para crear sitios web rápidos, atractivos y con diferentes funcionalidades.'"></app-hero-section>
+
+<section class="services-offer">
+  <div class="container">
+    <h2 class="section-title">Qué ofrecemos<span class="accent-dot">:</span></h2>
+    
+    <div class="services-grid">
+      <!-- Servicio 1 -->
+      <div class="service-card">
+        <div class="service-marker" style="background-color: #F59E0B;"></div>
+        <h3 class="service-title">CMS WordPress personalizado</h3>
+        <p class="service-description">Hemos diseñado y mejorado una amplia variedad de sitios web basados en WordPress, ofreciendo soluciones digitales de calidad que impulsan el éxito de nuestros clientes.</p>
+      </div>
+      
+      <!-- Servicio 2 -->
+      <div class="service-card">
+        <div class="service-marker" style="background-color: #F59E0B;"></div>
+        <h3 class="service-title">Rediseño seguro de su sitio web</h3>
+        <p class="service-description">¿Siente que su sitio web necesita un impulso? Nuestro equipo especialista en UX puede ayudarlo en la migración desde un CMS heredado, modificar funcionalidades o rediseñar su sitio por completo.</p>
+      </div>
+      
+      <!-- Servicio 3 -->
+      <div class="service-card">
+        <div class="service-marker" style="background-color: #7C3AED;"></div>
+        <h3 class="service-title">Respetamos sus cronograma</h3>
+        <p class="service-description">Si necesita el proyecto terminado en un plazo determinado, ajustamos nuestra metodología para completar su proyecto lo más rápido posible asegurando un resultado de calidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="custom-development">
+  <div class="container">
+    <div class="development-content">
+      <div class="development-text">
+        <h2 class="development-title">Desarrollo de sitios web <br>a medida<span class="accent-dot">.</span></h2>
+        <p class="development-description">Construimos sitios web y aplicaciones web basados en su visión estratégica, necesidades comerciales y problemas que desea resolver. Nuestro equipo sabe lo que se necesita para crear backends robustos y frontends visualmente atractivos.</p>
+        
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-circle" data-animate="true">
+              <div class="circle-fill"></div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Sitios web en WordPress</h3>
+              <p class="feature-description">Si desea mejorar la imagen de su empresa con un sitio eficaz, podemos crear uno para usted. LINELAB ofrece servicios de desarrollo web de cualquier complejidad, ya sea que necesite simplemente modificar algunas funciones o crear un proyecto a gran escala.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-circle" data-animate="true">
+              <div class="circle-fill"></div>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Plataformas web complejas</h3>
+              <p class="feature-description">Si necesita una aplicación web que sea rápida e interactiva, ha venido al lugar correcto. Brindamos servicios de desarrollo de aplicaciones web a empresas SaaS, comercios electrónicos y otras empresas, mejorando las soluciones existentes o creando otras nuevas personalizadas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="development-image">
+        <img src="/assets/images/web-development.jpg" alt="Desarrollo web profesional" class="responsive-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Tecnologías -->
+<app-tech-list [technologies]="technologies" [title]="'Tecnologías que utilizamos'"></app-tech-list>
+
+<!-- Sección de Preguntas Frecuentes -->
+<app-faq [title]="'Preguntas frecuentes'" [categories]="categories"></app-faq>
+
+<!-- Sección de Contacto -->
+<app-contact-form></app-contact-form>
