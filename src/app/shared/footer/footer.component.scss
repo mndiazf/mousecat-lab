@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+
+.footer {
+  background: #000;
+  color: #fff;
+  padding: 2.5rem 0 0 0;
+  border-top: 1px solid #222;
+  font-size: 1rem;
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    .footer-col {
+      flex: 1 1 220px;
+      min-width: 200px;
+      margin-bottom: 2rem;
+    }
+    .footer-brand {
+      max-width: 260px;
+      .footer-logo {
+        width: 240px;
+        height: auto;
+      }
+      .footer-description {
+        color: #ccc;
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+      }
+      .footer-address {
+        font-size: 0.9rem;
+        color: #bbb;
+      }
+    }
+    .footer-section-title {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    .footer-link {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 0.4rem;
+      transition: color 0.2s;
+      &:hover {
+        color: $color-accent-secondary;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+  .footer-bottom {
+    border-top: 1px solid #222;
+    margin-top: 1rem;
+    padding: 1rem 0 0.5rem 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #888;
+  }
+}

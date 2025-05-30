@@ -1,7 +1,11 @@
-<div class="home-background">
+<div class="home-background" [ngClass]="{'service-hero': currentPath.includes('/service')}" >
   <div class="home-content">
     <h1 class="home-title">
       {{ title }}<span class="accent-dot">.</span>
     </h1>
+
+    <p class="home-subtitle" *ngIf="subtitle">
+      {{ subtitle }}
+    </p>
   </div>
 </div>

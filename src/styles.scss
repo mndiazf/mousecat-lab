@@ -1,6 +1,21 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Montserrat', 'Lato', Arial, sans-serif;
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', 'Lato', Arial, sans-serif;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+// El footer debe estar fuera de .main-content para que quede abajo
 *{
     margin: 0;
     padding: 0;

@@ -143,32 +143,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {
       title: 'Desarrollo de Software',
       items: [
-        { name: 'Desarrollo Web', link: '/servicios/web' },
-        { name: 'eCommerce', link: '/servicios/ecommerce' },
-        { name: 'Integración de Sistemas', link: '/servicios/integracion' },
-        { name: 'Software a medida', link: '/servicios/medida' }
+        { name: 'Desarrollo Web', link: '/service/web-design' },
+        { name: 'eCommerce', link: '/service/ecommerce' },
+        { name: 'Integración de Sistemas', link: '/service/integration-systems' },
+        { name: 'Software a medida', link: '/service/custom-software' }
       ]
     },
     {
       title: 'Aplicaciones Móviles',
       items: [
-        { name: 'Desarrollo de Aplicaciones Móviles', link: '/servicios/moviles' }
+        { name: 'Desarrollo de Aplicaciones Móviles', link: '/service/mobile-apps' }
       ]
     },
     {
       title: 'Soluciones Cloud',
       items: [
-        { name: 'Asesoría en soluciones Cloud', link: '/servicios/cloud-asesoria' },
-        { name: 'Despliegue de Infraestructura', link: '/servicios/cloud-despliegue' },
-        { name: 'Diseño de Soluciones Cloud', link: '/servicios/cloud-diseno' },
-        { name: 'Mantención y Soporte Cloud', link: '/servicios/cloud-soporte' }
+        { name: 'Asesoría en soluciones Cloud', link: '/service/cloud-consulting' },
+        { name: 'Despliegue de Infraestructura', link: '/service/infrastructure-deployment' },
+        { name: 'Diseño de Soluciones Cloud', link: '/service/cloud-solutions-design' },
+        { name: 'Mantención y Soporte Cloud', link: '/service/cloud-maintenance-support' }
       ]
     },
     {
       title: 'Otros Servicios',
       items: [
-        { name: 'Consultoría TI', link: '/servicios/consultoria' },
-        { name: 'Soporte y Mantenimiento', link: '/servicios/soporte' }
+        { name: 'Consultoría TI', link: '/service/it-consulting' },
+        { name: 'Soporte y Mantenimiento', link: '/service/software-support-maintenance' }
       ]
     }
   ];
