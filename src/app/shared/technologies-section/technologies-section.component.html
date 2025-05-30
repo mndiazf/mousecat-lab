@@ -1,0 +1,34 @@
+<!-- TECHNOLOGIES SECTION COMPONENT -->
+<section id="technologies" class="section section--alt">
+    <div class="container">
+      <div class="text-center">
+        <h2>Tecnologías que dominamos</h2>
+      </div>
+      <div class="technologies-layout">
+        <div class="technologies-layout__text">
+          <p>Trabajamos con las tecnologías más modernas y confiables del mercado para ofrecerte soluciones robustas, escalables y de vanguardia. Nuestro equipo se mantiene constantemente actualizado para asegurar que tu proyecto se beneficie de las últimas innovaciones y mejores prácticas.</p>
+        </div>
+        <div class="technologies-layout__carousel">
+          <div class="tech-carousel-wrapper">
+            <div class="tech-carousel-track">
+              <div *ngFor="let t of technologies" class="tech-item">
+                <div class="tech__badge" [style.background]="t.color">
+                  <img *ngIf="t.iconUrl" [src]="t.iconUrl" [alt]="t.name + ' logo'" class="tech__icon">
+                  <ng-container *ngIf="!t.iconUrl">{{ t.name | slice:0:2 }}</ng-container>
+                </div>
+                <span class="tech__name">{{ t.name }}</span>
+              </div>
+              <div *ngFor="let t of technologies" class="tech-item" aria-hidden="true">
+                <div class="tech__badge" [style.background]="t.color">
+                  <img *ngIf="t.iconUrl" [src]="t.iconUrl" [alt]="t.name + ' logo'" class="tech__icon">
+                  <ng-container *ngIf="!t.iconUrl">{{ t.name | slice:0:2 }}</ng-container>
+                </div>
+                <span class="tech__name">{{ t.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,85 @@
+.footer {
+    background: #000;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 4rem 1rem 2rem;
+  
+    &__container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    &__grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 2rem;
+  
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  
+    &__column {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        li + li {
+          margin-top: 0.5rem;
+        }
+
+        a {
+          color: inherit; /* Asegura que los enlaces hereden el color del texto del footer */
+          text-decoration: none; /* Elimina el subrayado por defecto */
+
+          &:hover {
+            text-decoration: underline; /* Añade subrayado al pasar el ratón */
+          }
+        }
+
+        .whatsapp-link {
+          color: #25D366; /* Color verde de WhatsApp */
+          font-weight: 600; /* Opcional: para que resalte más */
+        }
+      }
+  
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+    }
+  
+    &__brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  
+      @media (min-width: 768px) {
+        align-items: center;
+      }
+    }
+  
+    &__logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 0.75rem;
+    }
+  
+    &__text-muted {
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  
+    &__bottom {
+      border-top: 1px solid #222;
+      padding-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #999;
+      text-align: center;
+    }
+  }
+  

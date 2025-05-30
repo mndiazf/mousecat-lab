@@ -1,0 +1,102 @@
+@use '../../styles/variables.scss' as v;
+
+.hero-alt {
+  padding-block: 3rem; /* Reducido para pantallas pequeñas */
+  background-color: v.$color-primary;
+
+  &__container {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+      padding-block: 5rem; /* Mantener el padding original para pantallas grandes */
+    }
+  }
+
+  &__content {
+    animation: fadeIn 1s ease-in-out both;
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.2;
+    color: v.$color-text;
+    margin-bottom: 1rem;
+
+    .highlight {
+      color: v.$color-accent-primary;
+    }
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: v.$color-text-muted;
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: v.$color-text;
+  }
+
+  &__buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__image {
+    perspective: 1000px;
+    img {
+        width: 100%;
+        border-radius: 1rem;
+        transform: rotateX(4deg) rotateY(4deg) scale(1);
+        transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+    
+
+      &:hover {
+        transform: rotateX(0deg) rotateY(0deg) scale(1.03) translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        filter: brightness(1.03) saturate(1.1);
+      }
+    }
+  }
+}
+
+
+    
+
+  
+
+.btn {
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: v.$color-accent-primary;
+  color: v.$color-primary;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &--primary:hover {
+    background: v.$color-accent-secondary;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

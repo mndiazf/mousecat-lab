@@ -1,0 +1,171 @@
+@use '../../styles/variables.scss' as v;
+
+.section {
+  padding-block: 5rem;
+
+  .container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+  }
+}
+
+.services__grid_new {
+  display: grid;
+  gap: 2rem;
+  align-items: stretch; // Cambiado a stretch para que ambas columnas intenten tener la misma altura
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+  }
+}
+
+.services__info {
+  h2 {
+    font-size: clamp(2.5rem, 5vw, 3.2rem); // más grande y responsive
+    margin-bottom: 1.25rem;
+    color: v.$color-accent-primary;
+    animation: fadeInTitle 0.8s ease-in-out;
+  }
+
+  p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: v.$color-text;
+  }
+  // Aseguramos que este contenedor pueda definir la altura para el grid de tarjetas
+  // Si es necesario, se puede añadir un min-height o height específico aquí
+  // o dejar que el contenido determine la altura.
+}
+
+/* ✅ Título animado */
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ Animación para tarjetas (al cambiar categoría) */
+@keyframes fadeInCards {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-category-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+
+  .btn--outline {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid v.$color-accent-primary;
+    color: v.$color-accent-primary;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active,
+    &:hover {
+      background-color: v.$color-accent-primary;
+      color: v.$color-primary;
+    }
+
+    &.active {
+      font-weight: 700;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .btn--outline {
+      width: auto;
+    }
+  }
+}
+
+.service-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr); // Definimos explícitamente 2 filas
+  gap: 1.5rem;
+  animation: fadeInCards 0.5s ease-in-out;
+  min-height: 500px; // Altura mínima de ejemplo. Ajusta este valor según sea necesario.
+  height: 100%; // Intentamos que ocupe la altura de la celda del grid padre.
+
+}
+
+.card--service-item {
+  background-color: v.$color-bg-card;
+  border-radius: .75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  min-height: 240px; // Altura mínima para cada tarjeta, ajusta según el diseño.
+
+  /* Estilo para el enlace que envuelve la tarjeta */
+  .card-link {
+    text-decoration: none; /* Elimina el subrayado por defecto del enlace */
+    color: inherit; /* Hereda el color del texto */
+    display: flex; /* Permite que el enlace ocupe todo el espacio y organice su contenido */
+    flex-direction: column; /* Organiza el contenido en columna */
+    height: 100%; /* Asegura que el enlace ocupe toda la altura de la tarjeta */
+  }
+
+  .card__image-container {
+    height: 150px; // Ajusta la altura de la imagen si es necesario
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* Eliminamos cursor: pointer; de aquí y lo pondremos en el .card--service-item si quieres que todo el área cambie el cursor */
+    cursor: pointer; /* Mantener si solo quieres el cursor pointer en la imagen */
+
+    .card__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5); 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: v.$color-primary;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Aplicar el hover al .card__overlay cuando se hace hover sobre el .card--service-item */
+  &:hover .card__image-container .card__overlay {
+    opacity: 1;
+  }
+
+  .card__title {
+    padding: 1rem; // Ajusta el padding si es necesario
+    margin: 0;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 500;
+    color: v.$color-text;
+  }
+}

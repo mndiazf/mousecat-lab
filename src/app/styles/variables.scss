@@ -3,7 +3,7 @@ $color-text: #000000; // Texto Principal (Negro)
 $color-content-alt: #d7d6d8; // Fondo Alternativo (Lavanda Claro)
 $color-accent-primary: #561585; // Acento Primario (Morado Oscuro)
 $color-accent-secondary: #783FA1; // Acento Secundario (Morado Intenso)
-$color-bg-card: #F7F7F7; // Fondo de Tarjetas/Secciones (Gris Claro)
+$color-bg-card: #f6f5f8; // Fondo de Tarjetas/Secciones (Gris Claro)
 $color-bg-alt: #EFEAF5; // Fondo Alternativo (Lavanda Claro)
 $color-dark-bg: #2B2B31FF; // Fondo Oscuro Alternativo (Negro Grisáceo)
 $color-text-muted: #2B2B31FF; // Fondo Oscuro Alternativo (Negro Grisáceo)
@@ -11,3 +11,5 @@ $color-text-on-dark: #2B2B31FF;
 $color-text-subtle-on-dark: #2B2B31FF;
 $color-border-soft: #dde2e7;       // Para bordes de input más suaves
 $color-text-placeholder: #a0aec0; // Para el texto del placeholder
+
+$font-family-base: 'Montserrat', 'Lato', Arial, sans-serif;

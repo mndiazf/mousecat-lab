@@ -1,0 +1,65 @@
+@use '../../styles/variables.scss' as v;
+
+.dynamic-industry-section {
+  padding-block: 5rem;
+  background: v.$color-content-alt;
+
+  .dynamic-industry-container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    display: grid;
+    align-items: center;
+    gap: 3rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .dynamic-industry-text {
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.5rem;
+      color: v.$color-text;
+    }
+
+    .dynamic-industry-subtitle {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: v.$color-text-muted;
+      margin-bottom: 1rem;
+      min-height: 2.5em;
+    }
+
+    .dynamic-industry-name {
+      color: v.$color-accent-primary;
+      font-weight: 600;
+      display: inline-block;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+
+      &.fade-out {
+        opacity: 0;
+      }
+    }
+
+    p:not(.dynamic-industry-subtitle) {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: v.$color-text;
+    }
+  }
+
+  .dynamic-industry-image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      text-align: right;
+    }
+  }
+}
