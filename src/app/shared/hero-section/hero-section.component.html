@@ -3,5 +3,9 @@
     <h1 class="home-title">
       {{ title }}<span class="accent-dot">.</span>
     </h1>
+
+    <div class="quote-button-container" *ngIf="showQuoteButton">
+      <a routerLink="/cotizar" class="hero-btn">Cotizar Proyecto</a>
+    </div>
   </div>
 </div>

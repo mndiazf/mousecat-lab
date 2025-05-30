@@ -1,139 +1,117 @@
-<!-- Franja superior con línea divisora -->
-<div class="header-topbar" [class.hidden]="!showTopbar">
+<!-- REFACTORIZADO Y SEO-FRIENDLY HEADER COMPONENT -->
+<nav class="header-topbar" [class.hidden]="!showTopbar" aria-label="Top Navigation">
   <div class="header-topbar-content">
     <div class="header-topbar-left">
       <span class="header-topbar-label">Síguenos:</span>
       <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="header-topbar-icon">
-        <img src="/ig.png" alt="Instagram" />
+        <img src="/ig.png" alt="Instagram - Mousecat" />
       </a>
       <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="header-topbar-icon">
-        <img src="/linkedin.png" alt="LinkedIn" />
+        <img src="/linkedin.png" alt="LinkedIn - Mousecat" />
       </a>
     </div>
     <div class="header-topbar-right">
       <span class="header-topbar-icon">
-        <img src="/mail.png" alt="Correo" />
+        <img src="/mail.png" alt="Correo contacto" />
       </span>
-      <span class="header-topbar-email">contacto&#64;mousecat.com</span>
+      <a href="mailto:contacto.mousecat@gmail.com" class="header-topbar-email">contacto.mousecat&#64;gmail.com</a>
     </div>
   </div>
-  <div class="header-topbar-divider"></div>
-</div>
+  <div class="header-topbar-divider" role="presentation"></div>
+</nav>
 
-<header class="header" [ngClass]="{'mobile-header': isMobile, 'desktop-header': !isMobile, 'scrolled': isScrolled}" [@headerTypeAnimation]>
+<header class="header" [ngClass]="{ 'mobile-header': isMobile, 'desktop-header': !isMobile, 'scrolled': isScrolled }" [@headerTypeAnimation]>
   <div class="header-bg" [class.scrolled]="isScrolled">
     <div class="header-top" *ngIf="isMobile">
       <a routerLink="/" class="header-logo-link">
-        <img src="/mousecat-logo.png" alt="Mousecat Logo" class="header-logo mobile-logo" />
+        <img src="/mousecat-logo.png" alt="Logo Mousecat" class="header-logo mobile-logo" />
       </a>
-      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú" [attr.aria-expanded]="menuOpen">
         <span [class.bar1]="!menuOpen" [class.x1]="menuOpen"></span>
         <span [class.bar2]="!menuOpen" [class.x2]="menuOpen"></span>
         <span [class.bar3]="!menuOpen" [class.x3]="menuOpen"></span>
       </button>
     </div>
+
     <div class="header-top" *ngIf="!isMobile">
       <a routerLink="/" class="header-logo-link">
-        <img [src]="isScrolled ? '/mousecat-logo.png' : '/mousecat-logow.png'" alt="Mousecat Logo" class="header-logo desktop-logo" />
+        <img [src]="isScrolled ? '/mousecat-logo.png' : '/mousecat-logow.png'" alt="Logo Mousecat" class="header-logo desktop-logo" />
       </a>
-      <nav class="header-nav">
-        <div class="header-link header-link-servicios"
-             (mouseenter)="showMegaMenu()"
-             (mouseleave)="hideMegaMenu()"
-             [class.active]="megaMenuOpen">
-          Servicios <span class="arrow">&#9662;</span>
-        </div>
-        <a routerLink="/industrias" routerLinkActive="active" class="header-link">Industrias</a>
-        <a routerLink="/tecnologias" routerLinkActive="active" class="header-link">Tecnologías</a>
-        <a routerLink="/empresa" routerLinkActive="active" class="header-link">Sobre nosotros</a>
-        <a routerLink="/blog" routerLinkActive="active" class="header-link">Blog</a>
-        <a routerLink="/cotizar" class="header-btn">Cotizar Proyecto</a>
-      </nav>
-      <!-- MegaMenu fuera del nav, pero dentro de header-bg -->
-      <div class="mega-menu" 
-           [class.show]="megaMenuOpen"
-           (mouseenter)="showMegaMenu()"
-           (mouseleave)="hideMegaMenu()">
-        <div class="mega-menu-column">
-          <div class="mega-menu-title">Desarrollo de Software</div>
-          <a routerLink="/servicios/web" class="mega-menu-item">Desarrollo Web</a>
-          <a routerLink="/servicios/ecommerce" class="mega-menu-item">eCommerce</a>
-          <a routerLink="/servicios/integracion" class="mega-menu-item">Integración de Sistemas</a>
-          <a routerLink="/servicios/medida" class="mega-menu-item">Software a medida</a>
-        </div>
-        <div class="mega-menu-divider"></div>
-        <div class="mega-menu-column">
-          <div class="mega-menu-title">Aplicaciones Móviles</div>
-          <a routerLink="/servicios/moviles" class="mega-menu-item">Desarrollo de Aplicaciones Móviles</a>
-        </div>
-        <div class="mega-menu-divider"></div>
-        <div class="mega-menu-column">
-          <div class="mega-menu-title">Soluciones Cloud</div>
-          <a routerLink="/servicios/cloud-asesoria" class="mega-menu-item">Asesoría en soluciones Cloud</a>
-          <a routerLink="/servicios/cloud-despliegue" class="mega-menu-item">Despliegue de Infraestructura</a>
-          <a routerLink="/servicios/cloud-diseno" class="mega-menu-item">Diseño de Soluciones Cloud</a>
-          <a routerLink="/servicios/cloud-soporte" class="mega-menu-item">Mantención y Soporte Cloud</a>
-        </div>
-        <div class="mega-menu-divider"></div>
-        <div class="mega-menu-column">
-          <div class="mega-menu-title">Otros Servicios</div>
-          <a routerLink="/servicios/consultoria" class="mega-menu-item">Consultoría TI</a>
-          <a routerLink="/servicios/soporte" class="mega-menu-item">Soporte y Mantenimiento de Software</a>
-        </div>
-      </div>
+      <ul class="header-nav" role="menubar" style="list-style: none; margin: 0; padding: 0">
+        <li class="header-link header-link-servicios" (mouseenter)="showMegaMenu()" (mouseleave)="hideMegaMenu()" [class.active]="megaMenuOpen" role="none">
+          <span role="menuitem">Servicios <span class="arrow">&#9662;</span></span>
+        </li>
+        <li role="none"><a routerLink="/industrias" routerLinkActive="active" class="header-link" role="menuitem">Industrias</a></li>
+        <li role="none"><a routerLink="/tecnologias" routerLinkActive="active" class="header-link" role="menuitem">Tecnologías</a></li>
+        <li role="none"><a routerLink="/empresa" routerLinkActive="active" class="header-link" role="menuitem">Sobre nosotros</a></li>
+        <li role="none"><a routerLink="/blog" routerLinkActive="active" class="header-link" role="menuitem">Blog</a></li>
+        <li role="none"><a routerLink="/cotizar" class="header-btn" role="menuitem">Cotizar Proyecto</a></li>
+      </ul>
+
+      <section class="mega-menu" [class.show]="megaMenuOpen" (mouseenter)="showMegaMenu()" (mouseleave)="hideMegaMenu()" aria-label="Mega Menú">
+        <ng-container *ngFor="let category of services">
+          <div class="mega-menu-column">
+            <div class="mega-menu-title">{{ category.title }}</div>
+            <a *ngFor="let item of category.items" routerLink="{{ item.link }}" class="mega-menu-item">{{ item.name }}</a>
+          </div>
+          <div class="mega-menu-divider"></div>
+        </ng-container>
+      </section>
     </div>
-    <div class="header-divider" *ngIf="isMobile"></div>
+
+    <div class="header-divider" *ngIf="isMobile" role="presentation"></div>
+
     <nav class="mobile-nav"
          *ngIf="isMobile"
          [@mobileMenuAnimation]="menuOpen ? 'open' : 'closed'"
          (@mobileMenuAnimation.done)="onMenuAnimationDone()"
-         [style.display]="isMobile && (menuOpen || animating) ? 'flex' : 'none'">
+         [style.display]="isMobile && (menuOpen || animating) ? 'flex' : 'none'"
+         role="navigation"
+         aria-label="Menú Móvil">
 
-      <!-- Botón Servicios con submenú -->
-      <div class="header-link mobile-servicios-btn" (click)="toggleMobileServicesMenu()">
-        Servicios
-        <span class="arrow" [class.open]="mobileServicesMenuOpen">&#9654;</span>
+      <div class="header-link mobile-servicios-btn" (click)="toggleMobileServicesMenu()" role="button" [attr.aria-expanded]="mobileServicesMenuOpen">
+        Servicios <span class="arrow" [class.open]="mobileServicesMenuOpen">&#9654;</span>
       </div>
-      <div class="mobile-services-menu"
-           [class.open]="mobileServicesMenuOpen">
-        <div class="mobile-services-category-wrapper" *ngFor="let category of services; let i = index">
-          <div class="mobile-services-category"
-               (click)="toggleMobileCategory(i, $event)">
-            <span>{{category.title}}</span>
-            <span class="arrow"
-                  [class.open]="mobileCategoryOpenIndex === i">&#9654;</span>
-          </div>
-          <div class="mobile-services-submenu"
-               [class.open]="mobileCategoryOpenIndex === i">
-            <div *ngIf="mobileCategoryOpenIndex === i">
+
+      <section class="mobile-services-menu" [class.open]="mobileServicesMenuOpen">
+        <ng-container *ngFor="let category of services; let i = index">
+          <div class="mobile-services-category-wrapper">
+            <div class="mobile-services-category" (click)="toggleMobileCategory(i, $event)">
+              <span>{{ category.title }}</span>
+              <span class="arrow" [class.open]="mobileCategoryOpenIndex === i">&#9654;</span>
+            </div>
+            <div class="mobile-services-submenu" [class.open]="mobileCategoryOpenIndex === i">
               <a *ngFor="let item of category.items"
-                 routerLink="{{item.link}}"
+                 routerLink="{{ item.link }}"
                  class="mobile-services-item"
                  (click)="closeAllMobileMenus()">
-                 {{item.name}}
-               </a>
-             </div>
-           </div>
-         </div>
-       </div>
+                 {{ item.name }}
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </section>
 
-      <!-- Resto de los links -->
       <a routerLink="/industrias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
       <a routerLink="/tecnologias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
       <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Sobre nosotros</a>
       <a routerLink="/blog" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Blog</a>
     </nav>
+
     <div class="header-bottom" *ngIf="isMobile">
       <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
     </div>
   </div>
 </header>
 
-<!-- Botón Scroll to Top -->
-<button 
-  class="scroll-to-top-btn" 
-  [class.visible]="isScrolled && isMobile" 
-  (click)="scrollToTop()"
-  aria-label="Volver arriba">
-  <img src="/arrow-up.png" alt="Flecha arriba" class="arrow-up-img">
+<button class="scroll-to-top-btn" [class.visible]="isScrolled && isMobile" (click)="scrollToTop()" aria-label="Volver arriba">
+  <img src="/arrow-up.png" alt="Flecha hacia arriba">
 </button>
+
+<a class="whatsapp-float-btn" 
+   href="https://wa.me/56973249757?text=Hola%2C%20estoy%20interesado%20en%20un%20proyecto%20con%20Mousecat" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   aria-label="Contactar por WhatsApp">
+  <img src="/WhatsApp.webp" alt="WhatsApp">
+</a>
