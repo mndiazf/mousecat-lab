@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './layouts/home/home.component';
+import { EcommerceComponent } from './layouts/services/ecommerce/ecommerce.component';
 import { IntegrationSystemsComponent } from './layouts/services/integration-systems/integration-systems.component';
 import { CustomSoftwareComponent } from './layouts/services/custom-software/custom-software.component';
 import { MobileAppsComponent } from './layouts/services/mobile-apps/mobile-apps.component';
@@ -14,6 +15,7 @@ import { WebDesignComponent } from './layouts/services/web-development/web-desig
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'services/web-design', component: WebDesignComponent },
+  { path: 'services/ecommerce', component: EcommerceComponent },
   { path: 'services/integration-systems', component: IntegrationSystemsComponent },
   { path: 'services/custom-software', component: CustomSoftwareComponent },
   { path: 'services/mobile-apps', component: MobileAppsComponent },

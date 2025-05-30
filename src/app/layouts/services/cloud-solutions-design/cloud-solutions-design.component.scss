@@ -1,1 +1,323 @@
-.service-detail { padding: 2rem; }
+// Variables
+$primary-color: #0056b3;
+$secondary-color: #00a0e9;
+$accent-color: #ff6b00;
+$text-color: #333;
+$light-gray: #f5f5f5;
+$medium-gray: #e0e0e0;
+$dark-gray: #666;
+$white: #fff;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Global Styles
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: $text-color;
+  
+  .accent {
+    color: $accent-color;
+  }
+}
+
+// Cloud Design Section
+.cloud-design-section {
+  padding: 4rem 0;
+  background-color: $light-gray;
+  
+  .cloud-design-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .cloud-design-text {
+      max-width: 800px;
+      text-align: center;
+      
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: $primary-color;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+// Services Section
+.services-section {
+  padding: 5rem 0;
+  background-color: $white;
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+      position: relative;
+      background-color: $white;
+      border-radius: 8px;
+      box-shadow: $box-shadow;
+      overflow: hidden;
+      transition: $transition;
+      display: flex;
+      height: 100%;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        
+        .service-indicator {
+          height: 100%;
+        }
+      }
+      
+      .service-content {
+        padding: 1.5rem;
+        flex: 1;
+        
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: $primary-color;
+        }
+        
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: $dark-gray;
+        }
+      }
+      
+      .service-indicator {
+        width: 6px;
+        height: 40%;
+        background-color: $accent-color;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: $transition;
+      }
+    }
+  }
+}
+
+// Platforms Section
+.platforms-section {
+  padding: 5rem 0;
+  background-color: $light-gray;
+  
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+    
+    .platform-card {
+      background-color: $white;
+      border-radius: 8px;
+      box-shadow: $box-shadow;
+      padding: 2rem;
+      text-align: center;
+      transition: $transition;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      }
+      
+      .platform-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: $primary-color;
+        
+        i {
+          transition: $transition;
+        }
+        
+        &:hover i {
+          transform: scale(1.1);
+        }
+      }
+      
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $text-color;
+      }
+      
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+// Process Section
+.process-section {
+  padding: 5rem 0;
+  background-color: $white;
+  
+  .process-steps {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    
+    .process-step {
+      display: flex;
+      margin-bottom: 2.5rem;
+      align-items: flex-start;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-right: 1.5rem;
+      }
+      
+      .step-content {
+        flex: 1;
+        
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: $primary-color;
+        }
+        
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: $dark-gray;
+        }
+      }
+    }
+  }
+}
+
+// Benefits Section
+.benefits-section {
+  padding: 5rem 0;
+  background-color: $light-gray;
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+    
+    .benefit-card {
+      background-color: $white;
+      border-radius: 8px;
+      box-shadow: $box-shadow;
+      padding: 2rem;
+      text-align: center;
+      transition: $transition;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      }
+      
+      .benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: $accent-color;
+      }
+      
+      h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $text-color;
+      }
+      
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .cloud-design-section .cloud-design-content .cloud-design-text h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .cloud-design-section .cloud-design-content .cloud-design-text h2 {
+    font-size: 1.6rem;
+  }
+  
+  .services-section .services-grid .service-card .service-content h3,
+  .platforms-section .platforms-grid .platform-card h3,
+  .process-section .process-steps .process-step .step-content h3,
+  .benefits-section .benefits-grid .benefit-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .process-section .process-steps .process-step {
+    flex-direction: column;
+    
+    .step-number {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
+}

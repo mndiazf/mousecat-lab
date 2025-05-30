@@ -1,6 +1,109 @@
+<app-hero-section [title]="'E-commerce'" [subtitle]="'Tiene la intención de lanzar su negocio de comercio electrónico en línea? ¿O le gustaría darle un impulso a su tienda online? En Unelab desarrollamos sitios de eCommerce rentables para cumplir las expectativas de sus clientes.'"></app-hero-section>
 
-<section class="service-detail">
-  <h1>E-commerce</h1>
-  <p>Boost your online sales with our e-commerce solutions.</p>
+<section class="ecommerce-section">
+  <div class="container">
+    <div class="ecommerce-content">
+      <div class="ecommerce-text">
+        <h2>Tenemos experiencia en WooCommerce y Shopify</h2>
+        <p>
+          Si está buscando aumentar sus ventas y ampliar su base de clientes, nuestros servicios de eCommerce pueden ayudar a su empresa a alcanzar estos objetivos. Nuestro equipo experimentado comprende la importancia de una fuerte presencia digital y se especializa en crear soluciones simples o totalmente personalizadas.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<section class="features-section">
+  <div class="container">
+    <h2 class="features-title">Características de nuestras tiendas<span class="accent">:</span></h2>
+    
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <div class="feature-number">1</div>
+        <h3>Tienda lista para dispositivos</h3>
+        <p>Experimenta una UX mejorada con diseño responsivo para una navegación fluida en dispositivos móviles. Amplía tu alcance interactuando con la audiencia móvil y disfruta de un rendimiento optimizado con carga rápida y experiencias fluidas adaptadas para móviles.</p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <div class="feature-number">2</div>
+        <h3>SEO optimizado en el sitio web</h3>
+        <p>Mejorar la visibilidad en búsquedas clave lleva a calificaciones más altas, generando mayor tráfico orgánico y potenciales clientes. Esta ventaja competitiva destaca en línea y supera a los competidores.</p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <div class="feature-number">3</div>
+        <h3>Mejorar la conversión de ventas</h3>
+        <p>Mejora las conversiones en línea mediante estrategias específicas y la participación del usuario para aumentar los ingresos. Amplía su presencia en línea para llegar a una audiencia más amplia y mejora las ventas con tácticas de marketing basadas en datos.</p>
+      </div>
+      
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <div class="feature-number">4</div>
+        <h3>Gestión eficiente del inventario</h3>
+        <p>Obtenga un seguimiento preciso del stock, simplifique el cumplimiento de pedidos y tome decisiones informadas mediante el uso de datos para una planificación efectiva del inventario.</p>
+      </div>
+      
+      <!-- Feature 5 -->
+      <div class="feature-card">
+        <div class="feature-number">5</div>
+        <h3>Múltiples pasarelas de pago</h3>
+        <p>Ofrece transacciones fluidas para una experiencia de pago sin fricciones, garantiza la confianza del cliente con sólidas medidas de seguridad y atiende diversas preferencias con múltiples opciones de pago.</p>
+      </div>
+      
+      <!-- Feature 6 -->
+      <div class="feature-card">
+        <div class="feature-number">6</div>
+        <h3>Proceso de venta omnicanal</h3>
+        <p>Accede a nuevos clientes mediante diversas plataformas, mantenga una experiencia unificada en todos los canales y maximice las ventas dirigiéndose a diferentes segmentos del mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platforms-section">
+  <div class="container">
+    <h2 class="platforms-title">Nuestras plataformas de eCommerce preferidas<span class="accent">.</span></h2>
+    
+    <div class="platform-row">
+      <div class="platform-info">
+        <div class="platform-logo woocommerce-logo">
+          <img src="assets/images/woocommerce-logo.svg" alt="WooCommerce logo">
+        </div>
+        <h3>WooCommerce</h3>
+        <p>
+          WooCommerce es una plataforma de comercio electrónico gratuita y de código abierto que permite a empresas y particulares crear y gestionar tiendas online. Está diseñado para funcionar perfectamente con WordPress, el sistema de gestión de contenidos más popular del mundo, y tiene una amplia gama de temas y complementos personalizables disponibles para satisfacer diferentes necesidades empresariales.
+        </p>
+      </div>
+      <div class="platform-image">
+        <img src="assets/images/woocommerce-example.jpg" alt="Ejemplo de tienda WooCommerce" class="img-fluid">
+      </div>
+    </div>
+    
+    <div class="platform-row reverse">
+      <div class="platform-image">
+        <img src="assets/images/shopify-example.jpg" alt="Ejemplo de tienda Shopify" class="img-fluid">
+      </div>
+      <div class="platform-info">
+        <div class="platform-logo shopify-logo">
+          <img src="assets/images/shopify-logo.svg" alt="Shopify logo">
+        </div>
+        <h3>Shopify</h3>
+        <p>
+          Shopify es una poderosa plataforma de comercio electrónico que permite a empresas de todos los tamaños crear y administrar sus tiendas en línea con facilidad. Con una variedad de funciones integradas que incluyen temas personalizables, procesamiento de pagos seguro y herramientas de administración de inventario, Shopify es la solución perfecta para empresas que buscan iniciar, centralizar toda su operación en un solo CMS.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Tecnologías -->
+<app-tech-list [technologies]="technologies" [title]="'Tecnologías que utilizamos'"></app-tech-list>
+
+<!-- Sección de Preguntas Frecuentes -->
+<app-faq [title]="'Preguntas frecuentes'" [categories]="categories"></app-faq>
+
+<!-- Sección de Contacto -->
+<app-contact-form></app-contact-form>
