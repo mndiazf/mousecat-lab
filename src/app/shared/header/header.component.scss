@@ -136,7 +136,8 @@
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* Cambiado de space-between a flex-start */
+  gap: 2rem; /* Añadido para controlar el espacio entre el logo y los items */
   padding: 2rem 2rem 1rem 2rem; /* Asegurarse de que el padding no cause desbordamiento */
   transition: all 0.3s ease;
   box-sizing: border-box; /* Asegura que el padding se incluya en el ancho */
@@ -152,6 +153,7 @@
   .header-bg.scrolled & {
     @media (min-width: 1141px) {
       padding: 0.75rem 2rem;
+      gap: 1.5rem; /* Ajustar el gap para el estado de scroll */
     }
   }
 }
@@ -277,7 +279,7 @@
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2rem; /* Este gap ya existe, pero asegúrate de que esté aquí */
   position: relative;
   z-index: 1100;
   @media (max-width: 1140px) {
