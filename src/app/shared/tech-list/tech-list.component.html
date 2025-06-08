@@ -1,0 +1,19 @@
+<section class="tech-list-section">
+  <div class="container">
+    <h2 class="section-title" *ngIf="title">{{ title }}<span class="accent-dot">.</span></h2>
+
+    <div class="tech-categories">
+      <div class="tech-category" *ngFor="let category of categories">
+        <h3 class="category-title">{{ category.name }}</h3>
+        <div class="tech-grid">
+          <div class="tech-badge" *ngFor="let tech of category.technologies">
+            <div class="tech-icon-container">
+              <img [src]="tech.iconUrl" [alt]="tech.name + ' icon'" class="tech-icon">
+            </div>
+            <span class="tech-name">{{ tech.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

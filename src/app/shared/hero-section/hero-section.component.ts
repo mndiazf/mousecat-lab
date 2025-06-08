@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class HeroSectionComponent {
   @Input() title: string = '';
   @Input() showQuoteButton: boolean = true;
+  @Input() subtitle: string = '';
 }

@@ -4,6 +4,10 @@
       {{ title }}<span class="accent-dot">.</span>
     </h1>
 
+    <p class="home-subtitle" *ngIf="subtitle">
+      {{ subtitle }}
+    </p>
+
     <div class="quote-button-container" *ngIf="showQuoteButton">
       <a routerLink="/cotizar" class="hero-btn">Cotizar Proyecto</a>
     </div>

@@ -1,0 +1,39 @@
+<section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">{{ title }}<span class="accent-dot">.</span></h2>
+      
+      <div class="faq-container">
+        <!-- Categorías de FAQ -->
+        <div class="faq-categories">
+          <button 
+            *ngFor="let category of categories" 
+            class="category-button" 
+            [class.active]="category.isActive"
+            (click)="toggleCategory(category.name)">
+            {{ category.name }}
+          </button>
+        </div>
+        
+        <div class="faq-questions">
+          <div *ngFor="let category of categories">
+            <div *ngIf="category.isActive" class="faq-category-questions">
+              <div *ngFor="let item of category.items" class="faq-item">
+                <div class="faq-question" (click)="toggleQuestion(item)">
+                  <h3>{{ item.question }}</h3>
+                  <div class="arrow" [class.open]="item.isOpen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                <div class="faq-answer" [class.open]="item.isOpen">
+                  <p>{{ item.answer }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

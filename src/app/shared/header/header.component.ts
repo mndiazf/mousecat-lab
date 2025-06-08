@@ -143,7 +143,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {
       title: 'Desarrollo de Software',
       items: [
-        { name: 'Desarrollo Web', link: '/servicios/web' },
+        { name: 'Desarrollo Web', link: '/services/web-design' },
         { name: 'eCommerce', link: '/servicios/ecommerce' },
         { name: 'Integración de Sistemas', link: '/servicios/integracion' },
         { name: 'Software a medida', link: '/servicios/medida' }
