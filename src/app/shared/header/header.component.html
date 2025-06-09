@@ -83,7 +83,7 @@
               <a *ngFor="let item of category.items"
                  routerLink="{{ item.link }}"
                  class="mobile-services-item"
-                 (click)="closeAllMobileMenus()">
+                 (click)="toggleMenu()">
                  {{ item.name }}
               </a>
             </div>

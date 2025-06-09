@@ -1,0 +1,304 @@
+@use '../../../styles/variables.scss' as v;
+
+// ======== GLOBAL STYLES ========
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: v.$color-text-heading;
+
+  .accent {
+    color: v.$color-accent-secondary;
+  }
+}
+
+// ======== MAINTENANCE SECTION ========
+.maintenance-section {
+  padding: 80px 0;
+  background-color: v.$color-bg-card;
+
+  .maintenance-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .maintenance-text {
+      max-width: 800px;
+
+      h2 {
+        font-size: 36px;
+        font-weight: 600;
+        color: v.$color-accent-primary;
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        font-size: 18px;
+        color: v.$color-text-body;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// ======== SERVICES SECTION ========
+.services-section {
+  padding: 80px 0;
+  background-color: v.$color-primary;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+    margin-top: 3rem;
+
+    .service-card {
+      position: relative;
+      background-color: v.$color-primary;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-5px);
+
+        .service-indicator {
+          height: 100%;
+        }
+      }
+
+      .service-content {
+        padding: 2rem;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          color: v.$color-accent-primary;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 16px;
+          color: v.$color-text-body;
+          line-height: 1.6;
+        }
+      }
+
+      .service-indicator {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6px;
+        height: 40%;
+        background-color: v.$color-accent-secondary;
+        transition: height 0.4s ease;
+      }
+    }
+  }
+}
+
+// ======== SUPPORT LEVELS SECTION ========
+.support-levels-section {
+  padding: 80px 0;
+  background-color: v.$color-bg-alt;
+
+  .support-levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 3rem;
+
+    .support-level-card {
+      background-color: v.$color-primary;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      &.featured {
+        border: 2px solid v.$color-accent-secondary;
+        transform: scale(1.05);
+
+        &:hover {
+          transform: scale(1.05) translateY(-5px);
+        }
+
+        .recommended {
+          background-color: v.$color-accent-secondary;
+          color: v.$color-primary;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          margin-left: 0.5rem;
+          font-weight: 600;
+        }
+      }
+
+      .level-header {
+        h3 {
+          font-size: 20px;
+          font-weight: 700;
+          color: v.$color-accent-primary;
+          display: inline-block;
+        }
+      }
+
+      .level-features {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+
+        li {
+          position: relative;
+          padding-left: 1.5rem;
+          margin-bottom: 0.75rem;
+          color: v.$color-text-body;
+          font-size: 16px;
+
+          &::before {
+            content: '✔';
+            color: v.$color-accent-primary;
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+
+      .level-description {
+        font-style: italic;
+        font-size: 14px;
+        color: v.$color-text-muted;
+      }
+    }
+  }
+}
+
+// ======== PROCESS SECTION ========
+.process-section {
+  padding: 80px 0;
+  background-color: v.$color-primary;
+
+  .process-steps {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 3rem;
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+
+      .step-number {
+        min-width: 50px;
+        min-height: 50px;
+        background-color: v.$color-accent-primary;
+        color: v.$color-primary;
+        font-weight: 700;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+      }
+
+      .step-content {
+        h3 {
+          font-size: 18px;
+          font-weight: 600;
+          color: v.$color-text-heading;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: v.$color-text-body;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+// ======== BENEFITS SECTION ========
+.benefits-section {
+  padding: 80px 0;
+  background-color: v.$color-bg-card;
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 3rem;
+
+    .benefit-card {
+      background-color: v.$color-primary;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .benefit-icon {
+        font-size: 2.5rem;
+        color: v.$color-accent-secondary;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: v.$color-text-heading;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 16px;
+        color: v.$color-text-body;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+// ======== RESPONSIVE ========
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .maintenance-section .maintenance-text h2 {
+    font-size: 28px;
+  }
+
+  .services-section .services-grid,
+  .benefits-section .benefits-grid,
+  .support-levels-section .support-levels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-section .process-step {
+    flex-direction: column;
+
+    .step-number {
+      margin-bottom: 1rem;
+    }
+  }
+}

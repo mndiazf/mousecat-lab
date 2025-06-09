@@ -1,0 +1,319 @@
+@use '../../../styles/variables' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: $color-text-heading;
+
+  .accent {
+    color: $color-accent-primary;
+  }
+}
+
+// Cloud Design Section
+.cloud-design-section {
+  padding: 4rem 0;
+  background-color: $color-content-alt;
+
+  .cloud-design-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cloud-design-text {
+      max-width: 800px;
+      text-align: center;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: $color-accent-primary;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: $color-text-body;
+      }
+    }
+  }
+}
+
+// Services Section
+.services-section {
+  padding: 5rem 0;
+  background-color: $color-primary;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .service-card {
+      position: relative;
+      background-color: $color-primary;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      height: 100%;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+        .service-indicator {
+          height: 100%;
+        }
+      }
+
+      .service-content {
+        padding: 1.5rem;
+        flex: 1;
+
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: $color-accent-primary;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: $color-text-body;
+        }
+      }
+
+      .service-indicator {
+        width: 6px;
+        height: 40%;
+        background-color: $color-accent-secondary;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+// Platforms Section
+.platforms-section {
+  padding: 5rem 0;
+  background-color: $color-bg-card;
+
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .platform-card {
+      background-color: $color-primary;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .platform-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        margin-bottom: 1.5rem;
+
+        img {
+          max-height: 100%;
+          max-width: 100px;
+          object-fit: contain;
+        }
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $color-text;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $color-text-body;
+      }
+    }
+  }
+}
+
+// Process Section
+.process-section {
+  padding: 5rem 0;
+  background-color: $color-primary;
+
+  .process-steps {
+    max-width: 900px;
+    margin: 3rem auto 0;
+
+    .process-step {
+      display: flex;
+      margin-bottom: 2.5rem;
+      align-items: flex-start;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $color-accent-primary;
+        color: $color-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-right: 1.5rem;
+      }
+
+      .step-content {
+        flex: 1;
+
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: $color-accent-primary;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: $color-text-body;
+        }
+      }
+    }
+  }
+}
+
+// Benefits Section
+.benefits-section {
+  padding: 5rem 0;
+  background-color: $color-bg-card;
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .benefit-card {
+      background-color: $color-primary;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: $color-accent-secondary;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $color-text;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $color-text-body;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .cloud-design-section .cloud-design-text h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .cloud-design-section .cloud-design-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .services-section .service-card h3,
+  .platforms-section .platform-card h3,
+  .process-section .process-step h3,
+  .benefits-section .benefit-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .process-section .process-step {
+    flex-direction: column;
+
+    .step-number {
+      margin-bottom: 1rem;
+      margin-right: 0;
+    }
+  }
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: $color-accent-secondary;
+  }
+  

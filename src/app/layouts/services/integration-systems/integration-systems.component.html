@@ -1,0 +1,116 @@
+<app-hero-section
+  [showQuoteButton]="false"
+  [title]="'Integración de Sistemas'"
+  [subtitle]="'Soluciones a la medida para optimizar su negocio conectando su mundo digital e impulsando la eficiencia y el crecimiento a través de soluciones personalizadas que conecten sus diferentes aplicaciones, software y hardware.'">
+</app-hero-section>
+
+<section class="automation-section">
+  <div class="container">
+    <div class="automation-content">
+      <div class="automation-title-wrapper">
+        <h2>Súmese a la automatización, reducción de costos y crecimiento<span class="accent">.</span></h2>
+      </div>
+      <div class="automation-text-wrapper">
+        <p>
+          Tenemos experiencia integrando sistemas, aplicaciones y software para optimizar la eficiencia, el flujo de información y la toma de decisiones estratégicas en las empresas. Ofrecemos soluciones personalizadas para empresas de todos los tamaños, desde la planificación e implementación hasta el soporte y mantenimiento continuo.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Beneficios de la integración de sistemas</h2>
+  
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🔁</div>
+          <h3>Automatización de procesos</h3>
+          <p>Reduzca el trabajo manual y los errores humanos mediante la automatización de flujos de trabajo entre sistemas.</p>
+        </div>
+  
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3>Mayor eficiencia operativa</h3>
+          <p>Optimice sus operaciones eliminando la duplicación de datos y mejorando la comunicación entre departamentos.</p>
+        </div>
+  
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Reducción de costos</h3>
+          <p>Disminuya gastos operativos al eliminar procesos redundantes y optimizar el uso de recursos.</p>
+        </div>
+  
+        <div class="benefit-card">
+          <div class="benefit-icon">🗂️</div>
+          <h3>Datos centralizados</h3>
+          <p>Acceda a información actualizada y precisa desde un punto central para tomar mejores decisiones.</p>
+        </div>
+  
+        <div class="benefit-card">
+          <div class="benefit-icon">🙋‍♂️</div>
+          <h3>Mejor experiencia del cliente</h3>
+          <p>Ofrezca un servicio más rápido y personalizado gracias a la disponibilidad inmediata de información relevante.</p>
+        </div>
+  
+        <div class="benefit-card">
+          <div class="benefit-icon">📦➡️🏢</div>
+          <h3>Escalabilidad</h3>
+          <p>Adapte fácilmente sus sistemas a medida que su empresa crece sin interrumpir las operaciones existentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<section class="process-section">
+  <div class="container">
+    <h2 class="section-title">Nuestro proceso de integración</h2>
+
+    <!-- 👇 Importante: esto permite que Angular use @ViewChild -->
+    <div class="process-steps" #processSteps>
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Análisis de necesidades</h3>
+        <p>Evaluamos sus sistemas actuales y objetivos de negocio para identificar oportunidades de integración.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Diseño de solución</h3>
+        <p>Creamos una arquitectura de integración personalizada que se adapta a sus necesidades específicas.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Desarrollo e implementación</h3>
+        <p>Construimos las conexiones necesarias entre sistemas utilizando las tecnologías más adecuadas.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Pruebas y optimización</h3>
+        <p>Verificamos que todas las integraciones funcionen correctamente y optimizamos el rendimiento.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-number">5</div>
+        <h3>Capacitación y soporte</h3>
+        <p>Proporcionamos formación a su equipo y ofrecemos soporte continuo para garantizar el éxito a largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de Tecnologías -->
+<app-tech-list [title]="'Tecnologías que utilizamos'"></app-tech-list>
+
+<!-- Sección de Preguntas Frecuentes -->
+<app-faq [title]="'Preguntas frecuentes'" [categories]="categories"></app-faq>
+
+<!-- Sección de Contacto -->
+<app-contact-form></app-contact-form>
+
+<!-- Sección del Footer -->
+<app-footer></app-footer>

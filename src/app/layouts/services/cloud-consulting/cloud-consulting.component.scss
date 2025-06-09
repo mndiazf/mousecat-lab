@@ -1,0 +1,249 @@
+@import '../../../styles/variables'; // Ajusta este path según tu proyecto
+
+// Globales
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-family: $font-family-base;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: $color-text-heading;
+
+  .accent {
+    color: $color-accent-light;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: $color-accent-light;
+    margin: 1rem auto 0;
+  }
+}
+
+// Sección principal de consultoría
+.consulting-section {
+  padding: 4rem 0;
+  background-color: $color-content-alt;
+
+  .consulting-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .consulting-text {
+      max-width: 800px;
+      text-align: center;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: $color-accent-primary;
+        font-family: $font-family-base;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: $color-text-body;
+        font-family: $font-family-base;
+      }
+    }
+  }
+}
+
+// Servicios de consultoría
+.services-section {
+  padding: 5rem 0;
+  background-color: $color-primary;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    .service-card {
+      background-color: $color-primary;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+
+        .service-indicator {
+          height: 100%;
+        }
+      }
+
+      .service-content {
+        padding: 1.5rem;
+
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: $color-accent-secondary;
+          font-family: $font-family-base;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: $color-text-body;
+          font-family: $font-family-base;
+        }
+      }
+
+      .service-indicator {
+        width: 6px;
+        height: 40%;
+        background-color: $color-accent-light;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+}
+
+// Enfoque de consultoría
+.approach-section {
+  padding: 5rem 0;
+  background-color: $color-bg-alt;
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    .approach-card {
+      background-color: $color-bg-card;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .approach-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: $color-accent-primary;
+
+        i {
+          transition: transform 0.3s ease;
+        }
+
+        &:hover i {
+          transform: scale(1.1);
+        }
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $color-text-heading;
+        font-family: $font-family-base;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $color-text-body;
+        font-family: $font-family-base;
+      }
+    }
+  }
+}
+
+// Beneficios
+.benefits-section {
+  padding: 5rem 0;
+  background-color: $color-primary;
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+
+    .benefit-card {
+      background-color: $color-bg-card;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .benefit-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: $color-accent-light;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: $color-text-heading;
+        font-family: $font-family-base;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: $color-text-body;
+        font-family: $font-family-base;
+      }
+    }
+  }
+}
+
+// Responsiveness
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .consulting-section .consulting-text h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .services-grid,
+  .approach-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}

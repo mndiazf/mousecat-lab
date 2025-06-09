@@ -1,0 +1,391 @@
+@use '../../../styles/variables.scss' as v;
+
+$transition: all 0.3s ease;
+$border-radius: 8px;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+  color: v.$color-text-heading;
+
+  .accent {
+    color: v.$color-accent-light;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: v.$color-accent-light;
+    margin: 15px auto 0;
+  }
+}
+
+// Soporte
+.support-section {
+  background-color: v.$color-bg-alt;
+
+  .support-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .support-text {
+      max-width: 800px;
+      text-align: center;
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: v.$color-accent-primary;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: v.$color-text-body;
+      }
+    }
+  }
+}
+
+// Servicios
+.services-section {
+  background-color: v.$color-primary;
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+
+    .service-card {
+      background-color: v.$color-primary;
+      border-radius: $border-radius;
+      overflow: hidden;
+      box-shadow: $card-shadow;
+      transition: $transition;
+      position: relative;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+        .service-indicator {
+          width: 100%;
+        }
+      }
+
+      .service-content {
+        padding: 25px;
+
+        h3 {
+          font-size: 1.4rem;
+          margin-bottom: 15px;
+          color: v.$color-accent-primary;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: v.$color-text-body;
+        }
+      }
+
+      .service-indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        width: 30%;
+        background-color: v.$color-accent-light;
+        transition: $transition;
+      }
+    }
+  }
+}
+
+// Niveles de soporte
+.levels-section {
+  background-color: v.$color-bg-alt;
+
+  .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+
+    .level-card {
+      background-color: v.$color-primary;
+      border-radius: $border-radius;
+      box-shadow: $card-shadow;
+      display: flex;
+      flex-direction: column;
+      transition: $transition;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      &.featured {
+        border: 2px solid v.$color-accent-light;
+        transform: scale(1.05);
+
+        .level-header {
+          background-color: v.$color-accent-light;
+
+          h3 {
+            color: v.$color-primary;
+          }
+        }
+      }
+
+      .level-header {
+        background-color: v.$color-accent-primary;
+        padding: 20px;
+        text-align: center;
+
+        h3 {
+          color: v.$color-primary;
+          font-size: 1.6rem;
+          margin: 0;
+        }
+
+        .recommended {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: v.$color-accent-light;
+          color: v.$color-primary;
+          font-size: 0.8rem;
+          padding: 5px 10px;
+          border-bottom-left-radius: $border-radius;
+          font-weight: bold;
+        }
+      }
+
+      .level-content {
+        padding: 25px;
+        flex-grow: 1;
+
+        .level-features {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 20px;
+
+          li {
+            padding-left: 25px;
+            margin-bottom: 8px;
+            position: relative;
+            color: v.$color-text-body;
+
+            &::before {
+              content: '✔';
+              position: absolute;
+              left: 0;
+              color: v.$color-accent-light;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .level-description {
+          font-style: italic;
+          color: v.$color-text-body;
+        }
+      }
+    }
+  }
+}
+
+// Proceso
+/* Mejora del diseño de los círculos numerados en el proceso de soporte */
+.process-section {
+    .process-steps {
+      .process-step {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 40px;
+        position: relative;
+        min-height: 80px;
+  
+        .step-number {
+          width: 60px;
+          height: 60px;
+          min-width: 60px;
+          min-height: 60px;
+          border-radius: 50%;
+          background-color: v.$color-accent-secondary;
+          color: v.$color-primary;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 2rem;
+          margin-right: 24px;
+          margin-top: 0;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          border: 4px solid v.$color-primary;
+          z-index: 1;
+          position: relative;
+        }
+  
+        .step-content {
+          h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: v.$color-accent-primary;
+          }
+  
+          p {
+            font-size: 1rem;
+            color: v.$color-text-body;
+          }
+        }
+      }
+    }
+  }
+  
+  
+
+// Beneficios
+.benefits-section {
+  background-color: v.$color-bg-alt;
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+
+    .benefit-card {
+      background-color: v.$color-primary;
+      padding: 30px;
+      border-radius: $border-radius;
+      box-shadow: $card-shadow;
+      text-align: center;
+      transition: $transition;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .benefit-icon {
+        font-size: 2.5rem;
+        color: v.$color-accent-light;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        color: v.$color-accent-primary;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1rem;
+        color: v.$color-text-body;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .services-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .levels-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .process-section {
+    .process-steps {
+      .process-step {
+        flex-direction: row;
+        align-items: flex-start;
+        min-height: 60px;
+
+        .step-number {
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
+          font-size: 1.2rem;
+          margin-bottom: 0;
+          margin-right: 16px;
+        }
+
+        &::after {
+          left: 22px; // Centro del círculo más pequeño (44px/2)
+          top: 44px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .support-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .level-card .level-header h3 {
+    font-size: 1.4rem;
+  }
+  .process-section {
+    .process-steps {
+      .process-step {
+        .step-number {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+          min-height: 36px;
+          font-size: 1rem;
+        }
+        &::after {
+          left: 18px; // Centro del círculo más pequeño (36px/2)
+          top: 36px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
