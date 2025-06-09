@@ -40,10 +40,9 @@
         <li class="header-link header-link-servicios" (mouseenter)="showMegaMenu()" (mouseleave)="hideMegaMenu()" [class.active]="megaMenuOpen" role="none">
           <span role="menuitem">Servicios <span class="arrow">&#9662;</span></span>
         </li>
-        <li role="none"><a routerLink="/industrias" routerLinkActive="active" class="header-link" role="menuitem">Industrias</a></li>
-        <li role="none"><a routerLink="/tecnologias" routerLinkActive="active" class="header-link" role="menuitem">Tecnologías</a></li>
-        <li role="none"><a routerLink="/empresa" routerLinkActive="active" class="header-link" role="menuitem">Sobre nosotros</a></li>
-        <li role="none"><a routerLink="/blog" routerLinkActive="active" class="header-link" role="menuitem">Blog</a></li>
+        <li role="none"><a routerLink="/industries" routerLinkActive="active" class="header-link" role="menuitem">Industrias</a></li>
+        <li role="none"><a routerLink="/tecnologies" routerLinkActive="active" class="header-link" role="menuitem">Tecnologías</a></li>
+        <li role="none"><a routerLink="/about-us" routerLinkActive="active" class="header-link" role="menuitem">Sobre nosotros</a></li>
         <li role="none"><a routerLink="/cotizar" class="header-btn" role="menuitem">Cotizar Proyecto</a></li>
       </ul>
 
@@ -91,10 +90,9 @@
         </ng-container>
       </section>
 
-      <a routerLink="/industrias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
-      <a routerLink="/tecnologias" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
-      <a routerLink="/empresa" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Sobre nosotros</a>
-      <a routerLink="/blog" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Blog</a>
+      <a routerLink="/industries" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Industrias</a>
+      <a routerLink="/tecnologies" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Tecnologías</a>
+      <a routerLink="/about-us" routerLinkActive="active" class="header-link" (click)="toggleMenu()">Sobre nosotros</a>
     </nav>
 
     <div class="header-bottom" *ngIf="isMobile">

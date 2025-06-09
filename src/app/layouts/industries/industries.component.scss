@@ -1,0 +1,328 @@
+@use '../../styles/variables.scss' as v;
+
+.dynamic-industry-section {
+  padding-block: 5rem;
+  background: v.$color-content-alt;
+
+  .dynamic-industry-container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    display: grid;
+    align-items: center;
+    gap: 3rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .dynamic-industry-text {
+
+    .dynamic-industry-subtitle {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: v.$color-text-muted;
+      min-height: 2.5em;
+    }
+
+    .dynamic-industry-name {
+      color: v.$color-accent-primary;
+      font-weight: 600;
+      display: inline-block;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+
+      &.fade-out {
+        opacity: 0;
+      }
+    }
+
+    p:not(.dynamic-industry-subtitle) {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: v.$color-text;
+    }
+  }
+
+  .dynamic-industry-icons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .industry-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+  
+      p {
+        margin: 0;
+        color: v.$color-text;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+  
+      .icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(v.$color-accent-primary, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: v.$color-accent-primary;
+  
+        &.user::before {
+          content: '👥'; // O usa un ícono SVG si prefieres
+        }
+  
+        &.stars::before {
+          content: '⭐';
+        }
+  
+        &.shield::before {
+          content: '🛡️';
+        }
+  
+        &.server::before {
+          content: '🖥️';
+        }
+      }
+    }
+  }
+}
+
+.hero {
+    background-color: v.$color-primary;
+    font-family: v.$font-family-base;
+    color: v.$color-text;
+    padding: 4rem 2rem;
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .hero-content {
+      margin-bottom: 3rem;
+  
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: v.$color-text-heading;
+        margin-bottom: 1.5rem;
+  
+        .highlighted .dot {
+          color: v.$color-accent-secondary;
+        }
+      }
+  
+      p {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: v.$color-text-body;
+      }
+    }
+  
+    .cta-banner {
+      background: linear-gradient(90deg, v.$color-accent-primary, v.$color-accent-secondary);
+      padding: 2rem;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+  
+      .cta-text {
+        color: v.$color-primary;
+        font-size: 1.25rem;
+        font-weight: 600;
+        max-width: 600px;
+        flex: 1 1 60%;
+      }
+  
+      .cta-button {
+        background-color: v.$color-accent-secondary2;
+        border: none;
+        border-radius: 40px;
+        padding: 0.75rem 1.5rem;
+        color: v.$color-primary;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+  
+        .arrow {
+          margin-left: 0.5rem;
+        }
+  
+        &:hover {
+          background-color: v.$color-accent-primary;
+        }
+      }
+    }
+  
+    // 🔁 Responsive adjustments
+    @media (max-width: 991px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+  
+      .cta-banner {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .cta-text {
+          font-size: 1.125rem;
+          flex: none;
+        }
+  
+        .cta-button {
+          align-self: stretch;
+          text-align: center;
+          width: 100%;
+          margin-top: 1rem;
+        }
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+  
+      .hero-content p {
+        font-size: 1rem;
+      }
+  
+      .cta-banner {
+        padding: 1.5rem;
+  
+        .cta-text {
+          font-size: 1rem;
+        }
+  
+        .cta-button {
+          font-size: 1rem;
+          padding: 0.75rem;
+        }
+      }
+    }
+  }
+  
+  .industries-section {
+    padding: 80px 0;
+    background-color: v.$color-primary;
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+  
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: v.$color-text-heading;
+      text-align: center;
+      margin-bottom: 60px;
+  
+      .accent {
+        color: v.$color-accent-secondary;
+      }
+    }
+  
+    .industries-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .industries-list {
+      flex: 1 1 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+  
+      .industry-item {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+  
+        .icon {
+          width: 56px;
+          height: 56px;
+          min-width: 56px;
+          border-radius: 50%;
+          background-color: v.$color-accent-secondary;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          .emoji-icon {
+            font-size: 26px;
+            color: v.$color-primary;
+          }
+        }
+  
+        .content {
+          h3 {
+            margin: 0;
+            font-size: 20px;
+            color: v.$color-text-heading;
+          }
+  
+          p {
+            margin-top: 5px;
+            font-size: 16px;
+            color: v.$color-text-body;
+          }
+        }
+      }
+    }
+  
+    .industries-image {
+      flex: 1 1 40%;
+      text-align: center;
+  
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .industries-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .industries-list,
+      .industries-image {
+        width: 100%;
+      }
+  
+      .industries-list {
+        gap: 20px;
+  
+        .icon {
+          width: 44px;
+          height: 44px;
+  
+          .emoji-icon {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+  

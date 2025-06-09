@@ -11,6 +11,9 @@ import { CloudConsultingComponent } from './layouts/services/cloud-consulting/cl
 import { CloudMaintenanceSupportComponent } from './layouts/services/cloud-maintenance-support/cloud-maintenance-support.component';
 import { ITConsultingComponent } from './layouts/services/it-consulting/it-consulting.component';
 import { SoftwareSupportMaintenanceComponent } from './layouts/services/software-support-maintenance/software-support-maintenance.component';
+import { IndustriesComponent } from './layouts/industries/industries.component';
+import { TecnologiesComponent } from './layouts/tecnologies/tecnologies.component';
+import { AboutUsComponent } from './layouts/about-us/about-us.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -25,5 +28,8 @@ export const routes: Routes = [
     { path: 'services/cloud-consulting', component: CloudConsultingComponent },
     { path: 'services/cloud-maintenance-support', component: CloudMaintenanceSupportComponent },
     { path: 'services/it-consulting', component: ITConsultingComponent },
-    { path: 'services/software-support-maintenance', component: SoftwareSupportMaintenanceComponent }
+    { path: 'services/software-support-maintenance', component: SoftwareSupportMaintenanceComponent },
+    { path: 'industries', component: IndustriesComponent },
+    { path: 'tecnologies', component: TecnologiesComponent },
+    { path: 'about-us', component: AboutUsComponent }
   ];

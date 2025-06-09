@@ -1,0 +1,325 @@
+@use '../../styles/variables.scss' as v;
+
+.about-section {
+  background-color: v.$color-bg-alt;
+  padding: 100px 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .about-header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    .section-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: v.$color-text-heading;
+
+      .highlight {
+        color: v.$color-accent-secondary;
+      }
+    }
+
+    .section-subtitle {
+      margin-top: 15px;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: v.$color-text-body;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+  }
+
+  .about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .about-image {
+    flex: 1 1 45%;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .about-info {
+    flex: 1 1 50%;
+
+    .about-description {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      color: v.$color-text;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-bottom: 40px;
+
+      .highlight-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+
+        .icon-circle {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: v.$color-accent-secondary;
+          color: v.$color-primary;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          flex-shrink: 0;
+        }
+
+        h4 {
+          margin: 0;
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: v.$color-text-heading;
+        }
+
+        p {
+          margin: 5px 0 0;
+          font-size: 0.95rem;
+          color: v.$color-text-body;
+        }
+      }
+    }
+
+    .about-cta-button {
+      background: v.$color-accent-primary;
+      color: v.$color-primary;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: v.$color-accent-secondary;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .about-grid {
+      flex-direction: column;
+    }
+
+    .about-image,
+    .about-info {
+      width: 100%;
+    }
+
+    .about-header .section-title {
+      font-size: 32px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .about-info .about-highlights .highlight-item .icon-circle {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .about-cta-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.approach-section {
+    background-color: v.$color-bg-card;
+    padding: 100px 0;
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  
+    .approach-header {
+      text-align: center;
+      margin-bottom: 60px;
+  
+      .section-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: v.$color-text-heading;
+  
+        .accent {
+          color: v.$color-accent-secondary;
+        }
+      }
+  
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: v.$color-text-body;
+        max-width: 800px;
+        margin: 15px auto 0;
+        line-height: 1.6;
+      }
+    }
+  
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+  
+    .approach-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .icon-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: v.$color-accent-secondary;
+        color: v.$color-primary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin: 0 auto 20px;
+      }
+  
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: v.$color-text-heading;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: v.$color-text-body;
+        line-height: 1.5;
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .approach-header .section-title {
+        font-size: 32px;
+      }
+  
+      .approach-card .icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .mission-vision-section {
+    background-color: v.$color-content-alt;
+    padding: 100px 0;
+  
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+  
+    .mv-header {
+      text-align: center;
+      margin-bottom: 60px;
+  
+      .section-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: v.$color-text-heading;
+  
+        .accent {
+          color: v.$color-accent-secondary;
+        }
+      }
+  
+      .section-description {
+        max-width: 700px;
+        margin: 20px auto 0;
+        font-size: 1.125rem;
+        color: v.$color-text-body;
+        line-height: 1.6;
+      }
+    }
+  
+    .mv-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+  
+    .mv-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      flex: 1 1 45%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .mv-icon {
+        font-size: 40px;
+        color: v.$color-accent-secondary;
+        margin-bottom: 20px;
+      }
+  
+      h3 {
+        font-size: 24px;
+        color: v.$color-text-heading;
+        margin-bottom: 15px;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: v.$color-text-body;
+        line-height: 1.6;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .mv-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .mv-card {
+        width: 100%;
+      }
+    }
+  }

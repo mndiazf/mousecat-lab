@@ -1,0 +1,87 @@
+<app-hero-section [title]="'Industrias en las que trabajamos'" [showQuoteButton]="false"></app-hero-section>
+
+<section class="dynamic-industry-section">
+    <div class="dynamic-industry-container">
+      <div class="dynamic-industry-text">
+        <p class="dynamic-industry-subtitle">
+          expertos en <span class="dynamic-industry-name" [class.fade-out]="isIndustryAnimatingOut">{{ currentAnimatedIndustry }}</span>
+        </p>
+      </div>
+      <div class="dynamic-industry-icons">
+        <div class="industry-item">
+          <div class="icon user"></div>
+          <p>Mejore la experiencia de sus usuarios</p>
+        </div>
+        <div class="industry-item">
+          <div class="icon stars"></div>
+          <p>Mejore la presencia de su negocio en línea</p>
+        </div>
+        <div class="industry-item">
+          <div class="icon shield"></div>
+          <p>Seguridad y protección de sus datos</p>
+        </div>
+        <div class="industry-item">
+          <div class="icon server"></div>
+          <p>Soporte técnico en nuestros servicios</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>
+          Mousecat impulsa la transformación digital<br />
+          con soluciones tecnológicas inteligentes<span class="dot">.</span>
+        </h1>
+        <p>
+          En Mousecat desarrollamos soluciones tecnológicas que se adaptan a los desafíos reales de su empresa. 
+          Combinamos innovación, experiencia y eficiencia para optimizar procesos, mejorar la gestión operativa y 
+          acelerar su transformación digital con herramientas escalables y seguras.
+        </p>
+      </div>
+  
+      <div class="cta-banner">
+        <div class="cta-text">
+          <strong>
+            Confíe en Mousecat para llevar su negocio al siguiente nivel con software a medida y visión estratégica
+          </strong>
+        </div>
+        <button class="cta-button">
+          Contactar <span class="arrow">➔</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="industries-section">
+    <div class="container">
+      <h2 class="section-title">Industrias en las que trabajamos<span class="accent">.</span></h2>
+  
+      <div class="industries-content">
+        <!-- Lista de industrias -->
+        <div class="industries-list">
+          <div class="industry-item" *ngFor="let item of industries">
+            <div class="icon">
+              <span class="emoji-icon">{{ item.icon }}</span>
+            </div>
+            <div class="content">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Imagen -->
+        <div class="industries-image">
+          <img src="/industries.webp" alt="Industrias" />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<app-contact-form></app-contact-form>
+  
+  
+<app-footer></app-footer>
