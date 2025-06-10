@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,11 @@ import { HeaderComponent } from './shared/header/header.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'mousecat-lab';
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  }
 }

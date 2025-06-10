@@ -48,9 +48,9 @@
             Confíe en Mousecat para llevar su negocio al siguiente nivel con software a medida y visión estratégica
           </strong>
         </div>
-        <button class="cta-button">
+        <button class="cta-button" (click)="scrollToContactForm()">
           Contactar <span class="arrow">➔</span>
-        </button>
+        </button>        
       </div>
     </div>
   </section>
@@ -81,7 +81,9 @@
     </div>
   </section>
   
-<app-contact-form></app-contact-form>
+<div #contactFormSection>
+  <app-contact-form></app-contact-form>
+</div>
   
   
 <app-footer></app-footer>

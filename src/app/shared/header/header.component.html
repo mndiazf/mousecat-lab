@@ -43,7 +43,7 @@
         <li role="none"><a routerLink="/industries" routerLinkActive="active" class="header-link" role="menuitem">Industrias</a></li>
         <li role="none"><a routerLink="/tecnologies" routerLinkActive="active" class="header-link" role="menuitem">Tecnologías</a></li>
         <li role="none"><a routerLink="/about-us" routerLinkActive="active" class="header-link" role="menuitem">Sobre nosotros</a></li>
-        <li role="none"><a routerLink="/cotizar" class="header-btn" role="menuitem">Cotizar Proyecto</a></li>
+        <li role="none"><a routerLink="/quote-project" class="header-btn" role="menuitem">Cotizar Proyecto</a></li>
       </ul>
 
       <section class="mega-menu" [class.show]="megaMenuOpen" (mouseenter)="showMegaMenu()" (mouseleave)="hideMegaMenu()" aria-label="Mega Menú">
@@ -96,7 +96,7 @@
     </nav>
 
     <div class="header-bottom" *ngIf="isMobile">
-      <a routerLink="/cotizar" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
+      <a routerLink="/quote-project" class="header-btn bottom-btn" (click)="toggleMenu()">Cotizar Proyecto</a>
     </div>
   </div>
 </header>

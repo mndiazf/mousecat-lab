@@ -8,11 +8,14 @@ import {
   query,
   stagger
 } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 interface ServiceItem {
   title: string;
   backgroundImageUrl: string;
+  link: string;
 }
+
 
 interface ServiceCategory {
   id: string;
@@ -24,7 +27,7 @@ interface ServiceCategory {
 @Component({
   selector: 'app-services-section',
   imports: [
-    CommonModule
+    CommonModule, RouterModule
   ],
   templateUrl: './services-section.component.html',
   styleUrl: './services-section.component.scss',
@@ -42,42 +45,83 @@ interface ServiceCategory {
   ]
 })
 export class ServicesSectionComponent {
-  serviceCategories: ServiceCategory[] = [
-    {
-      id: 'software-development',
-      categoryName: 'Desarrollo de Software',
-      items: [
-        { title: 'Desarrollo de App Web', backgroundImageUrl: '/web-dev.webp' },
-        { title: 'eCommerce', backgroundImageUrl: '/ecommerce.webp' },
-        { title: 'Integración de Sistemas', backgroundImageUrl: '/system-integration.webp' },
-        { title: 'Software a Medida', backgroundImageUrl: '/custom-software.webp' },
-      ]
-    },
-    {
-      id: 'mobile-apps',
-      categoryName: 'App Móviles',
-      items: [
-        { title: 'Desarrollo de Aplicaciones Móviles', backgroundImageUrl: '/mobile-apps.webp' },
-      ]
-    },
-    {
-      id: 'cloud-solutions',
-      categoryName: 'Soluciones Cloud',
-      items: [
-        { title: 'Diseño de Soluciones Cloud', backgroundImageUrl: '/cloud-design.webp' },
-        { title: 'Despliegue de Infraestructura Cloud', backgroundImageUrl: '/cloud-deploy.webp' },
-        { title: 'Mantención y Soporte Cloud', backgroundImageUrl: '/cloud-support.webp' },
-      ]
-    },
-    {
-      id: 'other-services',
-      categoryName: 'Otros Servicios',
-      items: [
-        { title: 'Asesoría Tecnológica', backgroundImageUrl: '/consulting.webp' },
-        { title: 'Soporte y Mantenimiento de Software', backgroundImageUrl: '/maintenance.webp' },
-      ]
-    }
-  ];
+serviceCategories: ServiceCategory[] = [
+  {
+    id: 'software-development',
+    categoryName: 'Desarrollo de Software',
+    items: [
+      {
+        title: 'Desarrollo de App Web',
+        backgroundImageUrl: '/web-dev.webp',
+        link: 'services/web-design'
+      },
+      {
+        title: 'eCommerce',
+        backgroundImageUrl: '/ecommerce.webp',
+        link: 'services/ecommerce'
+      },
+      {
+        title: 'Integración de Sistemas',
+        backgroundImageUrl: '/system-integration.webp',
+        link: 'services/integration-systems'
+      },
+      {
+        title: 'Software a Medida',
+        backgroundImageUrl: '/custom-software.webp',
+        link: 'services/custom-software'
+      }
+    ]
+  },
+  {
+    id: 'mobile-apps',
+    categoryName: 'App Móviles',
+    items: [
+      {
+        title: 'Desarrollo de Aplicaciones Móviles',
+        backgroundImageUrl: '/mobile-apps.webp',
+        link: 'services/mobile-apps'
+      }
+    ]
+  },
+  {
+    id: 'cloud-solutions',
+    categoryName: 'Soluciones Cloud',
+    items: [
+      {
+        title: 'Diseño de Soluciones Cloud',
+        backgroundImageUrl: '/cloud-design.webp',
+        link: 'services/cloud-solutions-design'
+      },
+      {
+        title: 'Despliegue de Infraestructura Cloud',
+        backgroundImageUrl: '/cloud-deploy.webp',
+        link: 'services/infrastructure-deployment'
+      },
+      {
+        title: 'Mantención y Soporte Cloud',
+        backgroundImageUrl: '/cloud-support.webp',
+        link: 'services/cloud-maintenance-support'
+      }
+    ]
+  },
+  {
+    id: 'other-services',
+    categoryName: 'Otros Servicios',
+    items: [
+      {
+        title: 'Asesoría Tecnológica',
+        backgroundImageUrl: '/consulting.webp',
+        link: 'services/it-consulting'
+      },
+      {
+        title: 'Soporte y Mantenimiento de Software',
+        backgroundImageUrl: '/maintenance.webp',
+        link: 'services/software-support-maintenance'
+      }
+    ]
+  }
+];
+
 
   selectedServiceCategoryId: string = this.serviceCategories[0]?.id || '';
   animationKey = 0;

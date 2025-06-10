@@ -46,7 +46,7 @@
             </div>
           </div>
   
-          <button class="about-cta-button">Agenda una reunión</button>
+          <button class="about-cta-button" (click)="scrollToContactForm()">Agenda una reunión</button>
         </div>
       </div>
     </div>
@@ -118,5 +118,7 @@
     </div>
   </section>
 
-<app-contact-form></app-contact-form>
+<div #contactFormSection>
+  <app-contact-form></app-contact-form>
+</div>
 <app-footer></app-footer>

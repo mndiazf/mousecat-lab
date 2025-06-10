@@ -14,6 +14,7 @@ import { SoftwareSupportMaintenanceComponent } from './layouts/services/software
 import { IndustriesComponent } from './layouts/industries/industries.component';
 import { TecnologiesComponent } from './layouts/tecnologies/tecnologies.component';
 import { AboutUsComponent } from './layouts/about-us/about-us.component';
+import { QuoteProjectComponent } from './layouts/quote-project/quote-project.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -31,5 +32,6 @@ export const routes: Routes = [
     { path: 'services/software-support-maintenance', component: SoftwareSupportMaintenanceComponent },
     { path: 'industries', component: IndustriesComponent },
     { path: 'tecnologies', component: TecnologiesComponent },
-    { path: 'about-us', component: AboutUsComponent }
+    { path: 'about-us', component: AboutUsComponent },
+    { path: 'quote-project', component: QuoteProjectComponent }
   ];

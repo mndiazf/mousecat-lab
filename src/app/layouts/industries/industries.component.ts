@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, HostListener, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { HeroSectionComponent } from "../../shared/hero-section/hero-section.component";
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from "../../shared/footer/footer.component";
@@ -16,6 +16,11 @@ import { ContactFormComponent } from "../../shared/contact-form/contact-form.com
   styleUrl: './industries.component.scss'
 })
 export class IndustriesComponent {
+  @ViewChild('contactFormSection') contactFormSection!: ElementRef;
+
+  scrollToContactForm(): void {
+    this.contactFormSection?.nativeElement?.scrollIntoView({ behavior: 'smooth' });
+  }
   animatedIndustryNames: string[] = [
     'Retail', 
     'Salud',
