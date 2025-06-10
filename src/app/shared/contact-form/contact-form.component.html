@@ -1,90 +1,86 @@
-<!-- Componente Contact Form sin Angular -->
 <section class="contact-section">
-    <div class="container">
-      <div class="contact-content">
-        <div class="contact-info">
-          <h2 class="section-title">Conversemos<span class="accent-dot">.</span></h2>
-          <p class="contact-description">
-            Si tienes algún proyecto en mente completa nuestro formulario de cotización, o resuelva sus dudas previas de forma gratuita!
-          </p>
-        </div>
-  
-        <div class="contact-form-container">
-          <form class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName">Tu nombre <span class="required">*</span></label>
-                <input type="text" id="firstName" placeholder="Nombre">
-              </div>
-              <div class="form-group">
-                <label for="lastName">Tu Apellido <span class="required">*</span></label>
-                <input type="text" id="lastName" placeholder="Apellido">
-              </div>
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-info">
+        <h2 class="section-title">Conversemos<span class="accent-dot">.</span></h2>
+        <p class="contact-description">
+          Si tienes algún proyecto en mente, completa nuestro formulario de cotización o resuelve tus dudas previas de forma gratuita.
+        </p>
+      </div>
+
+      <div class="contact-form-container">
+        <form class="contact-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">Tu nombre <span class="required">*</span></label>
+              <input type="text" id="firstName" placeholder="Nombre" formControlName="nombre" [class.invalid]="isInvalid('nombre')" />
             </div>
-  
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Correo electrónico <span class="required">*</span></label>
-                <input type="email" id="email" placeholder="correo@email.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">Teléfono <span class="required">*</span></label>
-                <div class="phone-input">
-                  <div class="country-code">
-                    <span class="flag">🇨🇱</span>
-                    <span>+56</span>
-                  </div>
-                  <input type="tel" id="phone" placeholder="2123 4567">
+            <div class="form-group">
+              <label for="lastName">Tu Apellido <span class="required">*</span></label>
+              <input type="text" id="lastName" placeholder="Apellido" formControlName="apellido" [class.invalid]="isInvalid('apellido')" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Correo electrónico <span class="required">*</span></label>
+              <input type="email" id="email" placeholder="correo@email.com" formControlName="email" [class.invalid]="isInvalid('email')" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono <span class="required">*</span></label>
+              <div class="phone-input">
+                <div class="country-code">
+                  <span class="flag">🇨🇱</span>
+                  <span>+56</span>
                 </div>
+                <input type="tel" id="phone" placeholder="2123 4567" formControlName="telefono" [class.invalid]="isInvalid('telefono')" />
               </div>
             </div>
-  
-            <div class="form-row">
-              <div class="form-group">
-                <label for="company">Empresa <span class="optional">(opcional)</span></label>
-                <input type="text" id="company" placeholder="ACME S.A.">
-              </div>
-              <div class="form-group">
-                <label for="contactPreference">¿Dónde te contactamos? <span class="required">*</span></label>
-                <select id="contactPreference">
-                  <option value="correo">Correo</option>
-                  <option value="telefono">Teléfono</option>
-                  <option value="whatsapp">WhatsApp</option>
-                </select>
-              </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Empresa <span class="optional">(opcional)</span></label>
+              <input type="text" id="company" placeholder="ACME S.A." formControlName="empresa" />
             </div>
-  
-            <div class="form-group full-width">
-              <label for="helpNeeded">¿Sobre qué necesitas ayuda? <span class="required">*</span></label>
-              <select id="helpNeeded">
-                <option value="" disabled>Selecciona una opción</option>
-                <option value="cotizacion" selected>Cotización</option>
-                <option value="web">Desarrollo Web</option>
-                <option value="mobile">Aplicaciones Móviles</option>
-                <option value="cloud">Soluciones Cloud</option>
-                <option value="consulting">Consultoría IT</option>
-                <option value="other">Otro</option>
+            <div class="form-group">
+              <label for="contactPreference">¿Dónde te contactamos? <span class="required">*</span></label>
+              <select id="contactPreference" formControlName="canalContacto" [class.invalid]="isInvalid('canalContacto')">
+                <option value="correo">Correo</option>
+                <option value="telefono">Teléfono</option>
+                <option value="whatsapp">WhatsApp</option>
               </select>
             </div>
-  
-            <div class="form-group full-width">
-              <label for="message">Cómo podemos ayudarte <span class="required">*</span></label>
-              <textarea id="message" rows="5"></textarea>
-            </div>
-  
-            <div class="form-actions">
-              <button type="submit" class="submit-button">Enviar</button>
-            </div>
-  
-            <div class="success-message" style="display: none">
-              <strong>¡Gracias por contactarnos!</strong> Te responderemos a la brevedad.
-            </div>
-  
-            <div class="error-message" style="display: none">
-              <strong>Error:</strong> Ocurrió un problema al enviar el formulario.
-            </div>
-          </form>
-        </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="helpNeeded">¿Sobre qué necesitas ayuda? <span class="required">*</span></label>
+            <select id="helpNeeded" formControlName="tipoAyuda" [class.invalid]="isInvalid('tipoAyuda')">
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="cotizacion">Cotización</option>
+              <option value="web">Desarrollo Web</option>
+              <option value="mobile">Aplicaciones Móviles</option>
+              <option value="cloud">Soluciones Cloud</option>
+              <option value="consulting">Consultoría IT</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message">Cómo podemos ayudarte <span class="required">*</span></label>
+            <textarea id="message" rows="5" formControlName="mensaje" [class.invalid]="isInvalid('mensaje')"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-button" [disabled]="form.invalid || loading">
+              <ng-container *ngIf="!loading">Enviar</ng-container>
+              <ng-container *ngIf="loading">
+                <span class="loading-spinner"></span>
+              </ng-container>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
