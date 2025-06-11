@@ -23,7 +23,6 @@ export const routes: Routes = [
     { path: 'services/integration-systems', component: IntegrationSystemsComponent },
     { path: 'services/custom-software', component: CustomSoftwareComponent },
     { path: 'services/mobile-apps', component: MobileAppsComponent },
-    { path: 'services/cloud-solutions-design', component: CloudSolutionsDesignComponent },
     { path: 'services/infrastructure-deployment', component: InfrastructureDeploymentComponent },
     { path: 'services/cloud-solutions-design', component: CloudSolutionsDesignComponent },
     { path: 'services/cloud-consulting', component: CloudConsultingComponent },
