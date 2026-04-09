@@ -36,6 +36,11 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## AWS static deploy
+
+This repo is configured to deploy the Angular frontend to `S3 + CloudFront` through GitHub Actions using AWS OIDC.
+The deployment workflow runs on pushes to `main` and publishes the Angular build output to the production S3 bucket, then invalidates CloudFront.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
